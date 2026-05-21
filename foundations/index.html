@@ -6,8 +6,9 @@
   <meta name="description" content="Mighty's design foundations as they live in Figma: colour tokens, typography, the logo system, and buttons.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Caveat+Brush&family=Inter:wght@500;700&family=Montserrat:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Inter:wght@500;700&family=Montserrat:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
+    @font-face { font-family: 'Flood Std'; font-style: normal; font-weight: 400; font-display: swap; src: url('../_assets/fonts/flood-std-regular.otf') format('opentype'); }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --jet: #000000;
@@ -30,7 +31,7 @@
       display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap;
     }
     header.brand-header .title { font-size: 64px; font-weight: 800; text-transform: uppercase; line-height: 0.9; letter-spacing: -1.5px; }
-    header.brand-header .title .accent { color: var(--spark); font-family: 'Caveat Brush', cursive; font-weight: 400; letter-spacing: -2px; }
+    header.brand-header .title .accent { color: var(--spark); font-family: 'Flood Std', 'Montserrat', sans-serif; font-weight: 400; letter-spacing: -2px; }
     header.brand-header .lede { font-size: 16px; color: var(--grey-4); max-width: 400px; line-height: 1.5; }
     header.brand-header .lede strong { color: var(--jet); }
 
@@ -84,7 +85,7 @@
     .m-xb-72 { font-family: 'Montserrat'; font-weight: 800; font-size: 72px; line-height: 1; text-transform: uppercase; letter-spacing: -1px; }
     .m-bold-22 { font-family: 'Montserrat'; font-weight: 700; font-size: 22px; line-height: 1.1; text-transform: uppercase; letter-spacing: 1px; }
     .m-med-18 { font-family: 'Montserrat'; font-weight: 500; font-size: 18px; line-height: 1.5; }
-    .flood-72 { font-family: 'Flood Std', 'Caveat Brush', cursive; font-size: 72px; line-height: 0.95; letter-spacing: -2px; color: var(--spark); text-transform: uppercase; }
+    .flood-72 { font-family: 'Flood Std', 'Montserrat', sans-serif; font-size: 72px; line-height: 0.95; letter-spacing: -2px; color: var(--spark); text-transform: uppercase; }
     .urw-22 { font-family: 'URW Geometric', 'Inter', sans-serif; font-weight: 500; font-size: 22px; line-height: 1.4; }
     .archivo-16 { font-family: 'Archivo'; font-size: 16px; line-height: 1.5; letter-spacing: 1.6px; text-transform: uppercase; }
 
@@ -123,9 +124,9 @@
     }
     .btn-body { font-size: 18px; line-height: 1.4; letter-spacing: 0.36px; padding: 12px 32px; }
     .btn-hero { font-size: 22px; line-height: 1.4; letter-spacing: 0.44px; padding: 16px 48px; }
-    .btn-jet { background: var(--jet); color: var(--mlk); filter: drop-shadow(-8px 8px 0 var(--mlk)); }
-    .btn-unsweet { background: #E86A0A; color: var(--mlk); filter: drop-shadow(-8px 8px 0 var(--mlk)); }
-    .btn-spark { background: var(--spark); color: var(--jet); filter: drop-shadow(-8px 8px 0 var(--jet)); }
+    .btn-jet { background: var(--jet); color: var(--mlk); filter: drop-shadow(-6px 6px 0 var(--mlk)); }
+    .btn-unsweet { background: #E86A0A; color: var(--mlk); filter: drop-shadow(-6px 6px 0 var(--mlk)); }
+    .btn-spark { background: var(--spark); color: var(--jet); filter: drop-shadow(-6px 6px 0 var(--jet)); }
 
     footer { margin-top: 64px; padding: 24px; background: var(--jet); color: var(--mlk); border-radius: 8px; font-size: 12px; line-height: 1.6; }
     footer code { background: rgba(255,255,255,0.1); padding: 1px 6px; border-radius: 3px; font-family: 'JetBrains Mono', monospace; }
@@ -265,7 +266,7 @@
           400 · 48–122px · 1.0 line-height · brand accent
           <div class="source">Verified in Hero v2/v3/v4/v5, Text Block v4/v5, Final CTA v3/v5.</div>
           <div class="usage">Hand-painted accent — one to three uppercase words inside a headline.</div>
-          <div class="fallback-note"><strong>Web fallback:</strong> Caveat Brush (Google Fonts) — chosen for this implementation because Flood Std isn't licensed for cloud Figma / browser rendering. The actual sample below is being drawn in Caveat Brush.</div>
+          <div class="fallback-note"><strong>Web:</strong> Flood Std is self-hosted at <code>_assets/fonts/flood-std-regular.otf</code> via <code>@font-face</code>. Cloud Figma can't load it, so Figma renders fall back to Montserrat (acceptable per brand spec).</div>
         </div>
         <div class="type-sample"><span class="flood-72">thursday.</span></div>
       </div>

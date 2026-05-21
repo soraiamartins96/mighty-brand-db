@@ -1,4 +1,11 @@
 /* Mighty Brand DB — shared styles */
+@font-face {
+  font-family: 'Flood Std';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('_assets/fonts/flood-std-regular.otf') format('opentype');
+}
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
   --jet: #000000;

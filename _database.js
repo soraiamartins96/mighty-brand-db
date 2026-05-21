@@ -175,7 +175,7 @@ window.__MIGHTY_DB = {
           "weights": [
             "Regular (400)"
           ],
-          "webStatus": "Not web-licensed. This catalog renders Flood Std samples in Caveat Brush (Google Fonts) as a stand-in. In production emails the Flood Std file must be embedded; in browsers/cloud Figma it falls back."
+          "webStatus": "Self-hosted in this catalog at _assets/fonts/flood-std-regular.otf (loaded via @font-face). In production emails the same .woff2/.otf must be embedded; cloud Figma still can't load it, so Figma renders fall back to Montserrat."
         }
       ],
       "scale": [
@@ -1160,11 +1160,11 @@ window.__MIGHTY_DB = {
     },
     {
       "id": "ugc-block-v2",
-      "name": "UGC Block",
-      "version": "v2",
-      "section": "UGC Block",
+      "name": "Comparison Block",
+      "version": "v1",
+      "section": "Comparison Block",
       "figmaNodeId": "3416:13543",
-      "description": "Nutritional comparison table (filed under UGC Block v2 in Figma). 6-row × 4-col table comparing MIGHTY against Cow's Milk and Avg Plant Milk on calcium / sugar / vitamin D / omega-3 / prebiotics.",
+      "description": "Nutritional comparison table. 6-row × 4-col table comparing MIGHTY against Cow's Milk and Avg Plant Milk on calcium / sugar / vitamin D / omega-3 / prebiotics.",
       "file": "ugc-block-v2/index.html",
       "preview": "ugc-block-v2/preview.png",
       "width": 600,
@@ -1369,7 +1369,7 @@ window.__MIGHTY_DB = {
       "variables": {
         "backgroundColor": "#F0B504",
         "textColor": "#000000",
-        "accentFont": "Caveat Brush"
+        "accentFont": "Flood Std"
       }
     },
     {
@@ -1423,11 +1423,11 @@ window.__MIGHTY_DB = {
     },
     {
       "id": "ugc-block-b-v2",
-      "name": "UGC Block B",
+      "name": "Comparison Block",
       "version": "v2",
-      "section": "UGC Block",
+      "section": "Comparison Block",
       "figmaNodeId": "3416:13609",
-      "description": "Product-vs-competitor comparison table with stacked product photos, six attribute rows separated by wavy dividers, and circular ingredient photo decorations.",
+      "description": "Product-vs-competitor comparison. Stacked product photos at top, brush-highlighter titles, six attribute rows separated by brush-stroke dividers, with circular food/ingredient photo decorations.",
       "file": "ugc-block-b-v2/index.html",
       "preview": "ugc-block-b-v2/preview.png",
       "width": 600,
@@ -1518,42 +1518,6 @@ window.__MIGHTY_DB = {
     }
   ],
   "elements": [
-    {
-      "id": "backgrounds-01",
-      "category": "backgrounds",
-      "name": "Backgrounds_v1",
-      "figmaNodeId": "3416:9343",
-      "file": "elements/backgrounds/item-01.svg",
-      "thumbnail": "elements/backgrounds/item-01.svg",
-      "description": "Brand background v1 (Not MLK / cream tone)."
-    },
-    {
-      "id": "backgrounds-02",
-      "category": "backgrounds",
-      "name": "Backgrounds_v2",
-      "figmaNodeId": "3416:14370",
-      "file": "elements/backgrounds/item-02.svg",
-      "thumbnail": "elements/backgrounds/item-02.svg",
-      "description": "Brand background v2 (Spark / yellow tone)."
-    },
-    {
-      "id": "backgrounds-03",
-      "category": "backgrounds",
-      "name": "Backgrounds_v3",
-      "figmaNodeId": "3416:9425",
-      "file": "elements/backgrounds/item-03.svg",
-      "thumbnail": "elements/backgrounds/item-03.svg",
-      "description": "Brand background v3 (decorative pattern)."
-    },
-    {
-      "id": "backgrounds-04",
-      "category": "backgrounds",
-      "name": "Backgrounds_v4",
-      "figmaNodeId": "3416:9462",
-      "file": "elements/backgrounds/item-04.svg",
-      "thumbnail": "elements/backgrounds/item-04.svg",
-      "description": "Brand background v4 (decorative pattern variant)."
-    },
     {
       "id": "dividers-01",
       "category": "dividers",
@@ -1685,212 +1649,76 @@ window.__MIGHTY_DB = {
       "description": "Email header with left-aligned Mighty logo (same logo asset)."
     },
     {
-      "id": "components-five-star-rating",
-      "category": "components",
-      "name": "Five-Star Rating",
-      "figmaNodeId": null,
-      "file": null,
-      "thumbnail": null,
-      "description": "Row of 5 Spark-yellow stars. Used at the top of quote/review cards. Pure inline SVG — no image asset.",
-      "htmlSnippet": "<span style=\"display:inline-flex; gap:4px;\" aria-label=\"5 out of 5 stars\">\n  <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"#F0B504\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12 2l2.95 6.36 6.95.6-5.27 4.6 1.6 6.79L12 16.9l-6.23 3.45 1.6-6.79L2.1 8.96l6.95-.6L12 2z\"/></svg>\n  <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"#F0B504\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12 2l2.95 6.36 6.95.6-5.27 4.6 1.6 6.79L12 16.9l-6.23 3.45 1.6-6.79L2.1 8.96l6.95-.6L12 2z\"/></svg>\n  <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"#F0B504\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12 2l2.95 6.36 6.95.6-5.27 4.6 1.6 6.79L12 16.9l-6.23 3.45 1.6-6.79L2.1 8.96l6.95-.6L12 2z\"/></svg>\n  <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"#F0B504\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12 2l2.95 6.36 6.95.6-5.27 4.6 1.6 6.79L12 16.9l-6.23 3.45 1.6-6.79L2.1 8.96l6.95-.6L12 2z\"/></svg>\n  <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"#F0B504\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12 2l2.95 6.36 6.95.6-5.27 4.6 1.6 6.79L12 16.9l-6.23 3.45 1.6-6.79L2.1 8.96l6.95-.6L12 2z\"/></svg>\n</span>"
+      "id": "illustrations-airplane",
+      "category": "illustrations",
+      "name": "airplane",
+      "figmaNodeId": "3416:12071",
+      "file": "elements/illustrations/airplane.svg",
+      "thumbnail": "elements/illustrations/airplane.svg",
+      "description": "airplane illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-dot",
+      "id": "illustrations-alarm-clock",
       "category": "illustrations",
-      "name": "dot",
-      "figmaNodeId": "3416:9717",
-      "file": "elements/illustrations/dot.svg",
-      "thumbnail": "elements/illustrations/dot.svg",
-      "description": "Decorative dot annotation mark."
+      "name": "alarm-clock",
+      "figmaNodeId": "3416:11938",
+      "file": "elements/illustrations/alarm-clock.svg",
+      "thumbnail": "elements/illustrations/alarm-clock.svg",
+      "description": "alarm-clock illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-stroke-vertical",
+      "id": "illustrations-apple",
       "category": "illustrations",
-      "name": "stroke-vertical",
-      "figmaNodeId": "3416:9724",
-      "file": "elements/illustrations/stroke-vertical.svg",
-      "thumbnail": "elements/illustrations/stroke-vertical.svg",
-      "description": "Vertical stroke annotation mark."
+      "name": "apple",
+      "figmaNodeId": "3416:10543",
+      "file": "elements/illustrations/apple.svg",
+      "thumbnail": "elements/illustrations/apple.svg",
+      "description": "apple illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-stroke-diagonal",
+      "id": "illustrations-arrow-curved-down-right",
       "category": "illustrations",
-      "name": "stroke-diagonal",
-      "figmaNodeId": "3416:9727",
-      "file": "elements/illustrations/stroke-diagonal.svg",
-      "thumbnail": "elements/illustrations/stroke-diagonal.svg",
-      "description": "Diagonal stroke annotation mark."
+      "name": "arrow-curved-down-right",
+      "figmaNodeId": "3416:9983",
+      "file": "elements/illustrations/arrow-curved-down-right.svg",
+      "thumbnail": "elements/illustrations/arrow-curved-down-right.svg",
+      "description": "arrow-curved-down-right illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-label-speech-bubble",
+      "id": "illustrations-arrow-curved-left",
       "category": "illustrations",
-      "name": "label-speech-bubble",
-      "figmaNodeId": "3416:9730",
-      "file": "elements/illustrations/label-speech-bubble.svg",
-      "thumbnail": "elements/illustrations/label-speech-bubble.svg",
-      "description": "Speech-bubble label illustration."
+      "name": "arrow-curved-left",
+      "figmaNodeId": "3416:9977",
+      "file": "elements/illustrations/arrow-curved-left.svg",
+      "thumbnail": "elements/illustrations/arrow-curved-left.svg",
+      "description": "arrow-curved-left illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-label-rectangle",
+      "id": "illustrations-arrow-down",
       "category": "illustrations",
-      "name": "label-rectangle",
-      "figmaNodeId": "3416:9744",
-      "file": "elements/illustrations/label-rectangle.svg",
-      "thumbnail": "elements/illustrations/label-rectangle.svg",
-      "description": "Rectangular label illustration."
+      "name": "arrow-down",
+      "figmaNodeId": "3416:9996",
+      "file": "elements/illustrations/arrow-down.svg",
+      "thumbnail": "elements/illustrations/arrow-down.svg",
+      "description": "arrow-down illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-label-rounded",
+      "id": "illustrations-arrow-left",
       "category": "illustrations",
-      "name": "label-rounded",
-      "figmaNodeId": "3416:9747",
-      "file": "elements/illustrations/label-rounded.svg",
-      "thumbnail": "elements/illustrations/label-rounded.svg",
-      "description": "Rounded label illustration."
+      "name": "arrow-left",
+      "figmaNodeId": "3416:9980",
+      "file": "elements/illustrations/arrow-left.svg",
+      "thumbnail": "elements/illustrations/arrow-left.svg",
+      "description": "arrow-left illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-cross",
+      "id": "illustrations-arrow-loop-down-left",
       "category": "illustrations",
-      "name": "cross",
-      "figmaNodeId": "3416:9750",
-      "file": "elements/illustrations/cross.svg",
-      "thumbnail": "elements/illustrations/cross.svg",
-      "description": "Cross / X annotation mark."
-    },
-    {
-      "id": "illustrations-tick",
-      "category": "illustrations",
-      "name": "tick",
-      "figmaNodeId": "3416:9753",
-      "file": "elements/illustrations/tick.svg",
-      "thumbnail": "elements/illustrations/tick.svg",
-      "description": "Tick / check annotation mark."
-    },
-    {
-      "id": "illustrations-label-pill",
-      "category": "illustrations",
-      "name": "label-pill",
-      "figmaNodeId": "3416:9756",
-      "file": "elements/illustrations/label-pill.svg",
-      "thumbnail": "elements/illustrations/label-pill.svg",
-      "description": "Pill-shaped label illustration."
-    },
-    {
-      "id": "illustrations-bulb",
-      "category": "illustrations",
-      "name": "bulb",
-      "figmaNodeId": "3416:9759",
-      "file": "elements/illustrations/bulb.svg",
-      "thumbnail": "elements/illustrations/bulb.svg",
-      "description": "Lightbulb idea annotation."
-    },
-    {
-      "id": "illustrations-label-square",
-      "category": "illustrations",
-      "name": "label-square",
-      "figmaNodeId": "3416:9762",
-      "file": "elements/illustrations/label-square.svg",
-      "thumbnail": "elements/illustrations/label-square.svg",
-      "description": "Square label annotation."
-    },
-    {
-      "id": "illustrations-mighty-wordmark",
-      "category": "illustrations",
-      "name": "mighty-wordmark",
-      "figmaNodeId": "3416:9781",
-      "file": "elements/illustrations/mighty-wordmark.svg",
-      "thumbnail": "elements/illustrations/mighty-wordmark.svg",
-      "description": "MIGHTY brand wordmark."
-    },
-    {
-      "id": "illustrations-burst-marks",
-      "category": "illustrations",
-      "name": "burst-marks",
-      "figmaNodeId": "3416:9789",
-      "file": "elements/illustrations/burst-marks.svg",
-      "thumbnail": "elements/illustrations/burst-marks.svg",
-      "description": "Burst / starburst annotation marks."
-    },
-    {
-      "id": "illustrations-lightning-bolt-pair",
-      "category": "illustrations",
-      "name": "lightning-bolt-pair",
-      "figmaNodeId": "3416:9799",
-      "file": "elements/illustrations/lightning-bolt-pair.svg",
-      "thumbnail": "elements/illustrations/lightning-bolt-pair.svg",
-      "description": "Pair of lightning bolts."
-    },
-    {
-      "id": "illustrations-lightning-bolt",
-      "category": "illustrations",
-      "name": "lightning-bolt",
-      "figmaNodeId": "3416:9805",
-      "file": "elements/illustrations/lightning-bolt.svg",
-      "thumbnail": "elements/illustrations/lightning-bolt.svg",
-      "description": "Single lightning bolt."
-    },
-    {
-      "id": "illustrations-badge-100-plant-based",
-      "category": "illustrations",
-      "name": "badge-100-plant-based",
-      "figmaNodeId": "3416:9815",
-      "file": "elements/illustrations/badge-100-plant-based.svg",
-      "thumbnail": "elements/illustrations/badge-100-plant-based.svg",
-      "description": "Badge — 100% Plant-Based."
-    },
-    {
-      "id": "illustrations-no-peanut",
-      "category": "illustrations",
-      "name": "no-peanut",
-      "figmaNodeId": "3416:9890",
-      "file": "elements/illustrations/no-peanut.svg",
-      "thumbnail": "elements/illustrations/no-peanut.svg",
-      "description": "No-peanut allergen icon (composite)."
-    },
-    {
-      "id": "illustrations-globe",
-      "category": "illustrations",
-      "name": "globe",
-      "figmaNodeId": "3416:9914",
-      "file": "elements/illustrations/globe.svg",
-      "thumbnail": "elements/illustrations/globe.svg",
-      "description": "Globe illustration."
-    },
-    {
-      "id": "illustrations-tongue-out",
-      "category": "illustrations",
-      "name": "tongue-out",
-      "figmaNodeId": "3416:9925",
-      "file": "elements/illustrations/tongue-out.svg",
-      "thumbnail": "elements/illustrations/tongue-out.svg",
-      "description": "Tongue-out emoji-style illustration."
-    },
-    {
-      "id": "illustrations-glass-of-milk",
-      "category": "illustrations",
-      "name": "glass-of-milk",
-      "figmaNodeId": "3416:9935",
-      "file": "elements/illustrations/glass-of-milk.svg",
-      "thumbnail": "elements/illustrations/glass-of-milk.svg",
-      "description": "Glass of milk illustration."
-    },
-    {
-      "id": "illustrations-milk-bottle",
-      "category": "illustrations",
-      "name": "milk-bottle",
-      "figmaNodeId": "3416:9944",
-      "file": "elements/illustrations/milk-bottle.svg",
-      "thumbnail": "elements/illustrations/milk-bottle.svg",
-      "description": "Milk bottle illustration."
-    },
-    {
-      "id": "illustrations-shaker-bottle",
-      "category": "illustrations",
-      "name": "shaker-bottle",
-      "figmaNodeId": "3416:9951",
-      "file": "elements/illustrations/shaker-bottle.svg",
-      "thumbnail": "elements/illustrations/shaker-bottle.svg",
-      "description": "Protein shaker bottle illustration."
+      "name": "arrow-loop-down-left",
+      "figmaNodeId": "3416:9990",
+      "file": "elements/illustrations/arrow-loop-down-left.svg",
+      "thumbnail": "elements/illustrations/arrow-loop-down-left.svg",
+      "description": "arrow-loop-down-left illustration from Mighty Figma library."
     },
     {
       "id": "illustrations-arrow-zigzag-up",
@@ -1899,25 +1727,340 @@ window.__MIGHTY_DB = {
       "figmaNodeId": "3416:9974",
       "file": "elements/illustrations/arrow-zigzag-up.svg",
       "thumbnail": "elements/illustrations/arrow-zigzag-up.svg",
-      "description": "Zigzag arrow pointing up annotation."
+      "description": "arrow-zigzag-up illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-social-icons",
+      "id": "illustrations-badge-100-plant-based",
       "category": "illustrations",
-      "name": "social-icons",
-      "figmaNodeId": "3416:9999",
-      "file": "elements/illustrations/social-icons.svg",
-      "thumbnail": "elements/illustrations/social-icons.svg",
-      "description": "Social media icons set."
+      "name": "badge-100-plant-based",
+      "figmaNodeId": "3416:9815",
+      "file": "elements/illustrations/badge-100-plant-based.svg",
+      "thumbnail": "elements/illustrations/badge-100-plant-based.svg",
+      "description": "badge-100-plant-based illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-phone",
+      "id": "illustrations-badge-4g-bcaa",
       "category": "illustrations",
-      "name": "phone",
-      "figmaNodeId": "3416:10006",
-      "file": "elements/illustrations/phone.svg",
-      "thumbnail": "elements/illustrations/phone.svg",
-      "description": "Phone / mobile device illustration."
+      "name": "badge-4g-bcaa",
+      "figmaNodeId": "3416:9835",
+      "file": "elements/illustrations/badge-4g-bcaa.svg",
+      "thumbnail": "elements/illustrations/badge-4g-bcaa.svg",
+      "description": "badge-4g-bcaa illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-badge-high-in-protein",
+      "category": "illustrations",
+      "name": "badge-high-in-protein",
+      "figmaNodeId": "3416:9842",
+      "file": "elements/illustrations/badge-high-in-protein.svg",
+      "thumbnail": "elements/illustrations/badge-high-in-protein.svg",
+      "description": "badge-high-in-protein illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-badge-less-sugar",
+      "category": "illustrations",
+      "name": "badge-less-sugar",
+      "figmaNodeId": "3416:9874",
+      "file": "elements/illustrations/badge-less-sugar.svg",
+      "thumbnail": "elements/illustrations/badge-less-sugar.svg",
+      "description": "badge-less-sugar illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-badge-under-120-calories",
+      "category": "illustrations",
+      "name": "badge-under-120-calories",
+      "figmaNodeId": "3416:9810",
+      "file": "elements/illustrations/badge-under-120-calories.svg",
+      "thumbnail": "elements/illustrations/badge-under-120-calories.svg",
+      "description": "badge-under-120-calories illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-bananas",
+      "category": "illustrations",
+      "name": "bananas",
+      "figmaNodeId": "3416:10256",
+      "file": "elements/illustrations/bananas.svg",
+      "thumbnail": "elements/illustrations/bananas.svg",
+      "description": "bananas illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-banner-ribbon",
+      "category": "illustrations",
+      "name": "banner-ribbon",
+      "figmaNodeId": "3416:12126",
+      "file": "elements/illustrations/banner-ribbon.svg",
+      "thumbnail": "elements/illustrations/banner-ribbon.svg",
+      "description": "banner-ribbon illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-birds-flying",
+      "category": "illustrations",
+      "name": "birds-flying",
+      "figmaNodeId": "3416:12144",
+      "file": "elements/illustrations/birds-flying.svg",
+      "thumbnail": "elements/illustrations/birds-flying.svg",
+      "description": "birds-flying illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-biscuit-mixed",
+      "category": "illustrations",
+      "name": "biscuit-mixed",
+      "figmaNodeId": "3416:11030",
+      "file": "elements/illustrations/biscuit-mixed.svg",
+      "thumbnail": "elements/illustrations/biscuit-mixed.svg",
+      "description": "biscuit-mixed illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-blender",
+      "category": "illustrations",
+      "name": "blender",
+      "figmaNodeId": "3416:10433",
+      "file": "elements/illustrations/blender.svg",
+      "thumbnail": "elements/illustrations/blender.svg",
+      "description": "blender illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-bourbon-biscuit",
+      "category": "illustrations",
+      "name": "bourbon-biscuit",
+      "figmaNodeId": "3416:10823",
+      "file": "elements/illustrations/bourbon-biscuit.svg",
+      "thumbnail": "elements/illustrations/bourbon-biscuit.svg",
+      "description": "bourbon-biscuit illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-bow-and-arrow",
+      "category": "illustrations",
+      "name": "bow-and-arrow",
+      "figmaNodeId": "3416:11740",
+      "file": "elements/illustrations/bow-and-arrow.svg",
+      "thumbnail": "elements/illustrations/bow-and-arrow.svg",
+      "description": "bow-and-arrow illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-brain",
+      "category": "illustrations",
+      "name": "brain",
+      "figmaNodeId": "3416:12182",
+      "file": "elements/illustrations/brain.svg",
+      "thumbnail": "elements/illustrations/brain.svg",
+      "description": "brain illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-bulb",
+      "category": "illustrations",
+      "name": "bulb",
+      "figmaNodeId": "3416:9759",
+      "file": "elements/illustrations/bulb.svg",
+      "thumbnail": "elements/illustrations/bulb.svg",
+      "description": "bulb illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-bunny-ears",
+      "category": "illustrations",
+      "name": "bunny-ears",
+      "figmaNodeId": "3416:11860",
+      "file": "elements/illustrations/bunny-ears.svg",
+      "thumbnail": "elements/illustrations/bunny-ears.svg",
+      "description": "bunny-ears illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-burst-marks",
+      "category": "illustrations",
+      "name": "burst-marks",
+      "figmaNodeId": "3416:9789",
+      "file": "elements/illustrations/burst-marks.svg",
+      "thumbnail": "elements/illustrations/burst-marks.svg",
+      "description": "burst-marks illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-butter-block",
+      "category": "illustrations",
+      "name": "butter-block",
+      "figmaNodeId": "3416:11683",
+      "file": "elements/illustrations/butter-block.svg",
+      "thumbnail": "elements/illustrations/butter-block.svg",
+      "description": "butter-block illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-calendar",
+      "category": "illustrations",
+      "name": "calendar",
+      "figmaNodeId": "3416:10066",
+      "file": "elements/illustrations/calendar.svg",
+      "thumbnail": "elements/illustrations/calendar.svg",
+      "description": "calendar illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-campfire",
+      "category": "illustrations",
+      "name": "campfire",
+      "figmaNodeId": "3416:11786",
+      "file": "elements/illustrations/campfire.svg",
+      "thumbnail": "elements/illustrations/campfire.svg",
+      "description": "campfire illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-candle",
+      "category": "illustrations",
+      "name": "candle",
+      "figmaNodeId": "3416:11973",
+      "file": "elements/illustrations/candle.svg",
+      "thumbnail": "elements/illustrations/candle.svg",
+      "description": "candle illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-cereal-bowl",
+      "category": "illustrations",
+      "name": "cereal-bowl",
+      "figmaNodeId": "3416:10720",
+      "file": "elements/illustrations/cereal-bowl.svg",
+      "thumbnail": "elements/illustrations/cereal-bowl.svg",
+      "description": "cereal-bowl illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-cheese-wedge",
+      "category": "illustrations",
+      "name": "cheese-wedge",
+      "figmaNodeId": "3416:10247",
+      "file": "elements/illustrations/cheese-wedge.svg",
+      "thumbnail": "elements/illustrations/cheese-wedge.svg",
+      "description": "cheese-wedge illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-christmas-tree",
+      "category": "illustrations",
+      "name": "christmas-tree",
+      "figmaNodeId": "3416:11761",
+      "file": "elements/illustrations/christmas-tree.svg",
+      "thumbnail": "elements/illustrations/christmas-tree.svg",
+      "description": "christmas-tree illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-circle",
+      "category": "illustrations",
+      "name": "circle",
+      "figmaNodeId": "3416:10050",
+      "file": "elements/illustrations/circle.svg",
+      "thumbnail": "elements/illustrations/circle.svg",
+      "description": "circle illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-cloud-puff",
+      "category": "illustrations",
+      "name": "cloud-puff",
+      "figmaNodeId": "3416:12203",
+      "file": "elements/illustrations/cloud-puff.svg",
+      "thumbnail": "elements/illustrations/cloud-puff.svg",
+      "description": "cloud-puff illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-cloud",
+      "category": "illustrations",
+      "name": "cloud",
+      "figmaNodeId": "3416:12148",
+      "file": "elements/illustrations/cloud.svg",
+      "thumbnail": "elements/illustrations/cloud.svg",
+      "description": "cloud illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-coffee-beans",
+      "category": "illustrations",
+      "name": "coffee-beans",
+      "figmaNodeId": "3416:11717",
+      "file": "elements/illustrations/coffee-beans.svg",
+      "thumbnail": "elements/illustrations/coffee-beans.svg",
+      "description": "coffee-beans illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-coffee-cup",
+      "category": "illustrations",
+      "name": "coffee-cup",
+      "figmaNodeId": "3416:10613",
+      "file": "elements/illustrations/coffee-cup.svg",
+      "thumbnail": "elements/illustrations/coffee-cup.svg",
+      "description": "coffee-cup illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-coffee-mug",
+      "category": "illustrations",
+      "name": "coffee-mug",
+      "figmaNodeId": "3416:11179",
+      "file": "elements/illustrations/coffee-mug.svg",
+      "thumbnail": "elements/illustrations/coffee-mug.svg",
+      "description": "coffee-mug illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-cross",
+      "category": "illustrations",
+      "name": "cross",
+      "figmaNodeId": "3416:9750",
+      "file": "elements/illustrations/cross.svg",
+      "thumbnail": "elements/illustrations/cross.svg",
+      "description": "cross illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-cupcake",
+      "category": "illustrations",
+      "name": "cupcake",
+      "figmaNodeId": "3416:11162",
+      "file": "elements/illustrations/cupcake.svg",
+      "thumbnail": "elements/illustrations/cupcake.svg",
+      "description": "cupcake illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-custard-cream-biscuit",
+      "category": "illustrations",
+      "name": "custard-cream-biscuit",
+      "figmaNodeId": "3416:10843",
+      "file": "elements/illustrations/custard-cream-biscuit.svg",
+      "thumbnail": "elements/illustrations/custard-cream-biscuit.svg",
+      "description": "custard-cream-biscuit illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-digestive-biscuit",
+      "category": "illustrations",
+      "name": "digestive-biscuit",
+      "figmaNodeId": "3416:10954",
+      "file": "elements/illustrations/digestive-biscuit.svg",
+      "thumbnail": "elements/illustrations/digestive-biscuit.svg",
+      "description": "digestive-biscuit illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-dot",
+      "category": "illustrations",
+      "name": "dot",
+      "figmaNodeId": "3416:9717",
+      "file": "elements/illustrations/dot.svg",
+      "thumbnail": "elements/illustrations/dot.svg",
+      "description": "dot illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-easter-bunny",
+      "category": "illustrations",
+      "name": "easter-bunny",
+      "figmaNodeId": "3416:11867",
+      "file": "elements/illustrations/easter-bunny.svg",
+      "thumbnail": "elements/illustrations/easter-bunny.svg",
+      "description": "easter-bunny illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-easter-egg",
+      "category": "illustrations",
+      "name": "easter-egg",
+      "figmaNodeId": "3416:11766",
+      "file": "elements/illustrations/easter-egg.svg",
+      "thumbnail": "elements/illustrations/easter-egg.svg",
+      "description": "easter-egg illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-eggs",
+      "category": "illustrations",
+      "name": "eggs",
+      "figmaNodeId": "3416:10716",
+      "file": "elements/illustrations/eggs.svg",
+      "thumbnail": "elements/illustrations/eggs.svg",
+      "description": "eggs illustration from Mighty Figma library."
     },
     {
       "id": "illustrations-envelope",
@@ -1926,7 +2069,619 @@ window.__MIGHTY_DB = {
       "figmaNodeId": "3416:10022",
       "file": "elements/illustrations/envelope.svg",
       "thumbnail": "elements/illustrations/envelope.svg",
-      "description": "Envelope / email icon."
+      "description": "envelope illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-flag-england",
+      "category": "illustrations",
+      "name": "flag-england",
+      "figmaNodeId": "3416:10109",
+      "file": "elements/illustrations/flag-england.svg",
+      "thumbnail": "elements/illustrations/flag-england.svg",
+      "description": "flag-england illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-flag-germany",
+      "category": "illustrations",
+      "name": "flag-germany",
+      "figmaNodeId": "3416:10088",
+      "file": "elements/illustrations/flag-germany.svg",
+      "thumbnail": "elements/illustrations/flag-germany.svg",
+      "description": "flag-germany illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-flag-uk",
+      "category": "illustrations",
+      "name": "flag-uk",
+      "figmaNodeId": "3416:10124",
+      "file": "elements/illustrations/flag-uk.svg",
+      "thumbnail": "elements/illustrations/flag-uk.svg",
+      "description": "flag-uk illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-flour-bag",
+      "category": "illustrations",
+      "name": "flour-bag",
+      "figmaNodeId": "3416:10293",
+      "file": "elements/illustrations/flour-bag.svg",
+      "thumbnail": "elements/illustrations/flour-bag.svg",
+      "description": "flour-bag illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-french-fries",
+      "category": "illustrations",
+      "name": "french-fries",
+      "figmaNodeId": "3416:10735",
+      "file": "elements/illustrations/french-fries.svg",
+      "thumbnail": "elements/illustrations/french-fries.svg",
+      "description": "french-fries illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-glass-of-milk",
+      "category": "illustrations",
+      "name": "glass-of-milk",
+      "figmaNodeId": "3416:9935",
+      "file": "elements/illustrations/glass-of-milk.svg",
+      "thumbnail": "elements/illustrations/glass-of-milk.svg",
+      "description": "glass-of-milk illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-glasses",
+      "category": "illustrations",
+      "name": "glasses",
+      "figmaNodeId": "3416:11990",
+      "file": "elements/illustrations/glasses.svg",
+      "thumbnail": "elements/illustrations/glasses.svg",
+      "description": "glasses illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-globe-grid",
+      "category": "illustrations",
+      "name": "globe-grid",
+      "figmaNodeId": "3416:10012",
+      "file": "elements/illustrations/globe-grid.svg",
+      "thumbnail": "elements/illustrations/globe-grid.svg",
+      "description": "globe-grid illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-globe",
+      "category": "illustrations",
+      "name": "globe",
+      "figmaNodeId": "3416:9914",
+      "file": "elements/illustrations/globe.svg",
+      "thumbnail": "elements/illustrations/globe.svg",
+      "description": "globe illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-gravy-boat",
+      "category": "illustrations",
+      "name": "gravy-boat",
+      "figmaNodeId": "3416:10561",
+      "file": "elements/illustrations/gravy-boat.svg",
+      "thumbnail": "elements/illustrations/gravy-boat.svg",
+      "description": "gravy-boat illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-gut-heart",
+      "category": "illustrations",
+      "name": "gut-heart",
+      "figmaNodeId": "3416:12200",
+      "file": "elements/illustrations/gut-heart.svg",
+      "thumbnail": "elements/illustrations/gut-heart.svg",
+      "description": "gut-heart illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-hand-mixer",
+      "category": "illustrations",
+      "name": "hand-mixer",
+      "figmaNodeId": "3416:10398",
+      "file": "elements/illustrations/hand-mixer.svg",
+      "thumbnail": "elements/illustrations/hand-mixer.svg",
+      "description": "hand-mixer illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-handshake",
+      "category": "illustrations",
+      "name": "handshake",
+      "figmaNodeId": "3416:12094",
+      "file": "elements/illustrations/handshake.svg",
+      "thumbnail": "elements/illustrations/handshake.svg",
+      "description": "handshake illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-hearts",
+      "category": "illustrations",
+      "name": "hearts",
+      "figmaNodeId": "3416:11735",
+      "file": "elements/illustrations/hearts.svg",
+      "thumbnail": "elements/illustrations/hearts.svg",
+      "description": "hearts illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-hoodie",
+      "category": "illustrations",
+      "name": "hoodie",
+      "figmaNodeId": "3416:11911",
+      "file": "elements/illustrations/hoodie.svg",
+      "thumbnail": "elements/illustrations/hoodie.svg",
+      "description": "hoodie illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-hot-chocolate",
+      "category": "illustrations",
+      "name": "hot-chocolate",
+      "figmaNodeId": "3416:10581",
+      "file": "elements/illustrations/hot-chocolate.svg",
+      "thumbnail": "elements/illustrations/hot-chocolate.svg",
+      "description": "hot-chocolate illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-kettle",
+      "category": "illustrations",
+      "name": "kettle",
+      "figmaNodeId": "3416:10625",
+      "file": "elements/illustrations/kettle.svg",
+      "thumbnail": "elements/illustrations/kettle.svg",
+      "description": "kettle illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-kitchen-scale",
+      "category": "illustrations",
+      "name": "kitchen-scale",
+      "figmaNodeId": "3416:10361",
+      "file": "elements/illustrations/kitchen-scale.svg",
+      "thumbnail": "elements/illustrations/kitchen-scale.svg",
+      "description": "kitchen-scale illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-label-pill",
+      "category": "illustrations",
+      "name": "label-pill",
+      "figmaNodeId": "3416:9756",
+      "file": "elements/illustrations/label-pill.svg",
+      "thumbnail": "elements/illustrations/label-pill.svg",
+      "description": "label-pill illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-label-rectangle",
+      "category": "illustrations",
+      "name": "label-rectangle",
+      "figmaNodeId": "3416:9744",
+      "file": "elements/illustrations/label-rectangle.svg",
+      "thumbnail": "elements/illustrations/label-rectangle.svg",
+      "description": "label-rectangle illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-label-rounded",
+      "category": "illustrations",
+      "name": "label-rounded",
+      "figmaNodeId": "3416:9747",
+      "file": "elements/illustrations/label-rounded.svg",
+      "thumbnail": "elements/illustrations/label-rounded.svg",
+      "description": "label-rounded illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-label-speech-bubble",
+      "category": "illustrations",
+      "name": "label-speech-bubble",
+      "figmaNodeId": "3416:9730",
+      "file": "elements/illustrations/label-speech-bubble.svg",
+      "thumbnail": "elements/illustrations/label-speech-bubble.svg",
+      "description": "label-speech-bubble illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-label-square",
+      "category": "illustrations",
+      "name": "label-square",
+      "figmaNodeId": "3416:9762",
+      "file": "elements/illustrations/label-square.svg",
+      "thumbnail": "elements/illustrations/label-square.svg",
+      "description": "label-square illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-latte-art",
+      "category": "illustrations",
+      "name": "latte-art",
+      "figmaNodeId": "3416:11206",
+      "file": "elements/illustrations/latte-art.svg",
+      "thumbnail": "elements/illustrations/latte-art.svg",
+      "description": "latte-art illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-lavender-sprig",
+      "category": "illustrations",
+      "name": "lavender-sprig",
+      "figmaNodeId": "3416:10460",
+      "file": "elements/illustrations/lavender-sprig.svg",
+      "thumbnail": "elements/illustrations/lavender-sprig.svg",
+      "description": "lavender-sprig illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-lightbulb",
+      "category": "illustrations",
+      "name": "lightbulb",
+      "figmaNodeId": "3416:12001",
+      "file": "elements/illustrations/lightbulb.svg",
+      "thumbnail": "elements/illustrations/lightbulb.svg",
+      "description": "lightbulb illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-lightning-bolt-pair",
+      "category": "illustrations",
+      "name": "lightning-bolt-pair",
+      "figmaNodeId": "3416:9799",
+      "file": "elements/illustrations/lightning-bolt-pair.svg",
+      "thumbnail": "elements/illustrations/lightning-bolt-pair.svg",
+      "description": "lightning-bolt-pair illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-lightning-bolt",
+      "category": "illustrations",
+      "name": "lightning-bolt",
+      "figmaNodeId": "3416:9805",
+      "file": "elements/illustrations/lightning-bolt.svg",
+      "thumbnail": "elements/illustrations/lightning-bolt.svg",
+      "description": "lightning-bolt illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-lotus-biscuit",
+      "category": "illustrations",
+      "name": "lotus-biscuit",
+      "figmaNodeId": "3416:10990",
+      "file": "elements/illustrations/lotus-biscuit.svg",
+      "thumbnail": "elements/illustrations/lotus-biscuit.svg",
+      "description": "lotus-biscuit illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-love-letter",
+      "category": "illustrations",
+      "name": "love-letter",
+      "figmaNodeId": "3416:11751",
+      "file": "elements/illustrations/love-letter.svg",
+      "thumbnail": "elements/illustrations/love-letter.svg",
+      "description": "love-letter illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-luggage-pair",
+      "category": "illustrations",
+      "name": "luggage-pair",
+      "figmaNodeId": "3416:11836",
+      "file": "elements/illustrations/luggage-pair.svg",
+      "thumbnail": "elements/illustrations/luggage-pair.svg",
+      "description": "luggage-pair illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-magnifying-glass",
+      "category": "illustrations",
+      "name": "magnifying-glass",
+      "figmaNodeId": "3416:11982",
+      "file": "elements/illustrations/magnifying-glass.svg",
+      "thumbnail": "elements/illustrations/magnifying-glass.svg",
+      "description": "magnifying-glass illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-melon-slice",
+      "category": "illustrations",
+      "name": "melon-slice",
+      "figmaNodeId": "3416:10726",
+      "file": "elements/illustrations/melon-slice.svg",
+      "thumbnail": "elements/illustrations/melon-slice.svg",
+      "description": "melon-slice illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-mighty-logo",
+      "category": "illustrations",
+      "name": "mighty-logo",
+      "figmaNodeId": "3416:9765",
+      "file": "elements/illustrations/mighty-logo.svg",
+      "thumbnail": "elements/illustrations/mighty-logo.svg",
+      "description": "mighty-logo illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-mighty-wordmark",
+      "category": "illustrations",
+      "name": "mighty-wordmark",
+      "figmaNodeId": "3416:9781",
+      "file": "elements/illustrations/mighty-wordmark.svg",
+      "thumbnail": "elements/illustrations/mighty-wordmark.svg",
+      "description": "mighty-wordmark illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-milk-bottle-labeled",
+      "category": "illustrations",
+      "name": "milk-bottle-labeled",
+      "figmaNodeId": "3416:10374",
+      "file": "elements/illustrations/milk-bottle-labeled.svg",
+      "thumbnail": "elements/illustrations/milk-bottle-labeled.svg",
+      "description": "milk-bottle-labeled illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-milk-bottle",
+      "category": "illustrations",
+      "name": "milk-bottle",
+      "figmaNodeId": "3416:9944",
+      "file": "elements/illustrations/milk-bottle.svg",
+      "thumbnail": "elements/illustrations/milk-bottle.svg",
+      "description": "milk-bottle illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-milkshake",
+      "category": "illustrations",
+      "name": "milkshake",
+      "figmaNodeId": "3416:10651",
+      "file": "elements/illustrations/milkshake.svg",
+      "thumbnail": "elements/illustrations/milkshake.svg",
+      "description": "milkshake illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-mixing-bowl",
+      "category": "illustrations",
+      "name": "mixing-bowl",
+      "figmaNodeId": "3416:10385",
+      "file": "elements/illustrations/mixing-bowl.svg",
+      "thumbnail": "elements/illustrations/mixing-bowl.svg",
+      "description": "mixing-bowl illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-no-boxes",
+      "category": "illustrations",
+      "name": "no-boxes",
+      "figmaNodeId": "3416:9969",
+      "file": "elements/illustrations/no-boxes.svg",
+      "thumbnail": "elements/illustrations/no-boxes.svg",
+      "description": "no-boxes illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-no-peanut",
+      "category": "illustrations",
+      "name": "no-peanut",
+      "figmaNodeId": "3416:9890",
+      "file": "elements/illustrations/no-peanut.svg",
+      "thumbnail": "elements/illustrations/no-peanut.svg",
+      "description": "no-peanut illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-olive-branch",
+      "category": "illustrations",
+      "name": "olive-branch",
+      "figmaNodeId": "3416:9948",
+      "file": "elements/illustrations/olive-branch.svg",
+      "thumbnail": "elements/illustrations/olive-branch.svg",
+      "description": "olive-branch illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-open-suitcase",
+      "category": "illustrations",
+      "name": "open-suitcase",
+      "figmaNodeId": "3416:12042",
+      "file": "elements/illustrations/open-suitcase.svg",
+      "thumbnail": "elements/illustrations/open-suitcase.svg",
+      "description": "open-suitcase illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-paint-stroke-black",
+      "category": "illustrations",
+      "name": "paint-stroke-black",
+      "figmaNodeId": "",
+      "file": "elements/illustrations/paint-stroke-black.svg",
+      "thumbnail": "elements/illustrations/paint-stroke-black.svg",
+      "description": "paint-stroke-black illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-paint-stroke-cream",
+      "category": "illustrations",
+      "name": "paint-stroke-cream",
+      "figmaNodeId": "",
+      "file": "elements/illustrations/paint-stroke-cream.svg",
+      "thumbnail": "elements/illustrations/paint-stroke-cream.svg",
+      "description": "paint-stroke-cream illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-paint-stroke-yellow",
+      "category": "illustrations",
+      "name": "paint-stroke-yellow",
+      "figmaNodeId": "",
+      "file": "elements/illustrations/paint-stroke-yellow.svg",
+      "thumbnail": "elements/illustrations/paint-stroke-yellow.svg",
+      "description": "paint-stroke-yellow illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-pancakes",
+      "category": "illustrations",
+      "name": "pancakes",
+      "figmaNodeId": "3416:10636",
+      "file": "elements/illustrations/pancakes.svg",
+      "thumbnail": "elements/illustrations/pancakes.svg",
+      "description": "pancakes illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-party-popper",
+      "category": "illustrations",
+      "name": "party-popper",
+      "figmaNodeId": "3416:11893",
+      "file": "elements/illustrations/party-popper.svg",
+      "thumbnail": "elements/illustrations/party-popper.svg",
+      "description": "party-popper illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-peach",
+      "category": "illustrations",
+      "name": "peach",
+      "figmaNodeId": "3416:12151",
+      "file": "elements/illustrations/peach.svg",
+      "thumbnail": "elements/illustrations/peach.svg",
+      "description": "peach illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-pepper-shaker",
+      "category": "illustrations",
+      "name": "pepper-shaker",
+      "figmaNodeId": "3416:10511",
+      "file": "elements/illustrations/pepper-shaker.svg",
+      "thumbnail": "elements/illustrations/pepper-shaker.svg",
+      "description": "pepper-shaker illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-phone",
+      "category": "illustrations",
+      "name": "phone",
+      "figmaNodeId": "3416:10006",
+      "file": "elements/illustrations/phone.svg",
+      "thumbnail": "elements/illustrations/phone.svg",
+      "description": "phone illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-piggy-bank",
+      "category": "illustrations",
+      "name": "piggy-bank",
+      "figmaNodeId": "3416:10054",
+      "file": "elements/illustrations/piggy-bank.svg",
+      "thumbnail": "elements/illustrations/piggy-bank.svg",
+      "description": "piggy-bank illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-pillows",
+      "category": "illustrations",
+      "name": "pillows",
+      "figmaNodeId": "3416:11947",
+      "file": "elements/illustrations/pillows.svg",
+      "thumbnail": "elements/illustrations/pillows.svg",
+      "description": "pillows illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-pointing-hand",
+      "category": "illustrations",
+      "name": "pointing-hand",
+      "figmaNodeId": "3416:12015",
+      "file": "elements/illustrations/pointing-hand.svg",
+      "thumbnail": "elements/illustrations/pointing-hand.svg",
+      "description": "pointing-hand illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-pomegranate",
+      "category": "illustrations",
+      "name": "pomegranate",
+      "figmaNodeId": "3416:11731",
+      "file": "elements/illustrations/pomegranate.svg",
+      "thumbnail": "elements/illustrations/pomegranate.svg",
+      "description": "pomegranate illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-pouring-bottle",
+      "category": "illustrations",
+      "name": "pouring-bottle",
+      "figmaNodeId": "3416:11048",
+      "file": "elements/illustrations/pouring-bottle.svg",
+      "thumbnail": "elements/illustrations/pouring-bottle.svg",
+      "description": "pouring-bottle illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-pram",
+      "category": "illustrations",
+      "name": "pram",
+      "figmaNodeId": "3416:11798",
+      "file": "elements/illustrations/pram.svg",
+      "thumbnail": "elements/illustrations/pram.svg",
+      "description": "pram illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-puddle",
+      "category": "illustrations",
+      "name": "puddle",
+      "figmaNodeId": "3416:12115",
+      "file": "elements/illustrations/puddle.svg",
+      "thumbnail": "elements/illustrations/puddle.svg",
+      "description": "puddle illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-pumpkin",
+      "category": "illustrations",
+      "name": "pumpkin",
+      "figmaNodeId": "3416:11776",
+      "file": "elements/illustrations/pumpkin.svg",
+      "thumbnail": "elements/illustrations/pumpkin.svg",
+      "description": "pumpkin illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-push-pin",
+      "category": "illustrations",
+      "name": "push-pin",
+      "figmaNodeId": "3416:12110",
+      "file": "elements/illustrations/push-pin.svg",
+      "thumbnail": "elements/illustrations/push-pin.svg",
+      "description": "push-pin illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-raspberry",
+      "category": "illustrations",
+      "name": "raspberry",
+      "figmaNodeId": "3416:10819",
+      "file": "elements/illustrations/raspberry.svg",
+      "thumbnail": "elements/illustrations/raspberry.svg",
+      "description": "raspberry illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-ribbon-curl",
+      "category": "illustrations",
+      "name": "ribbon-curl",
+      "figmaNodeId": "3416:12157",
+      "file": "elements/illustrations/ribbon-curl.svg",
+      "thumbnail": "elements/illustrations/ribbon-curl.svg",
+      "description": "ribbon-curl illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-rich-tea-biscuit",
+      "category": "illustrations",
+      "name": "rich-tea-biscuit",
+      "figmaNodeId": "3416:10904",
+      "file": "elements/illustrations/rich-tea-biscuit.svg",
+      "thumbnail": "elements/illustrations/rich-tea-biscuit.svg",
+      "description": "rich-tea-biscuit illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-sailboat",
+      "category": "illustrations",
+      "name": "sailboat",
+      "figmaNodeId": "3416:11854",
+      "file": "elements/illustrations/sailboat.svg",
+      "thumbnail": "elements/illustrations/sailboat.svg",
+      "description": "sailboat illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-salt-pepper-shakers",
+      "category": "illustrations",
+      "name": "salt-pepper-shakers",
+      "figmaNodeId": "3416:10213",
+      "file": "elements/illustrations/salt-pepper-shakers.svg",
+      "thumbnail": "elements/illustrations/salt-pepper-shakers.svg",
+      "description": "salt-pepper-shakers illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-salt-shaker",
+      "category": "illustrations",
+      "name": "salt-shaker",
+      "figmaNodeId": "3416:10481",
+      "file": "elements/illustrations/salt-shaker.svg",
+      "thumbnail": "elements/illustrations/salt-shaker.svg",
+      "description": "salt-shaker illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-seed-bag",
+      "category": "illustrations",
+      "name": "seed-bag",
+      "figmaNodeId": "3416:10276",
+      "file": "elements/illustrations/seed-bag.svg",
+      "thumbnail": "elements/illustrations/seed-bag.svg",
+      "description": "seed-bag illustration from Mighty Figma library."
+    },
+    {
+      "id": "illustrations-shaker-bottle",
+      "category": "illustrations",
+      "name": "shaker-bottle",
+      "figmaNodeId": "3416:9951",
+      "file": "elements/illustrations/shaker-bottle.svg",
+      "thumbnail": "elements/illustrations/shaker-bottle.svg",
+      "description": "shaker-bottle illustration from Mighty Figma library."
     },
     {
       "id": "illustrations-shopping-basket",
@@ -1935,247 +2690,178 @@ window.__MIGHTY_DB = {
       "figmaNodeId": "3416:10026",
       "file": "elements/illustrations/shopping-basket.svg",
       "thumbnail": "elements/illustrations/shopping-basket.svg",
-      "description": "Shopping basket icon."
+      "description": "shopping-basket illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-pour-into-bowl",
+      "id": "illustrations-social-icons",
       "category": "illustrations",
-      "name": "pour-into-bowl",
-      "file": "elements/illustrations/pour-into-bowl.png",
-      "thumbnail": "elements/illustrations/pour-into-bowl.png",
-      "description": "Bottle pouring contents into a bowl. Used in Selling Points v1."
+      "name": "social-icons",
+      "figmaNodeId": "3416:9999",
+      "file": "elements/illustrations/social-icons.svg",
+      "thumbnail": "elements/illustrations/social-icons.svg",
+      "description": "social-icons illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-blender",
+      "id": "illustrations-stars-five",
       "category": "illustrations",
-      "name": "blender",
-      "file": "elements/illustrations/blender.png",
-      "thumbnail": "elements/illustrations/blender.png",
-      "description": "Kitchen blender / measuring jug. Used in Selling Points v1."
+      "name": "stars-five",
+      "figmaNodeId": "3416:10075",
+      "file": "elements/illustrations/stars-five.svg",
+      "thumbnail": "elements/illustrations/stars-five.svg",
+      "description": "stars-five illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-glass-milk-full",
+      "id": "illustrations-strawberry-smoothie",
       "category": "illustrations",
-      "name": "glass-milk-full",
-      "file": "elements/illustrations/glass-milk-full.png",
-      "thumbnail": "elements/illustrations/glass-milk-full.png",
-      "description": "Full glass of milk (filled). Used in Selling Points v1."
+      "name": "strawberry-smoothie",
+      "figmaNodeId": "3416:11075",
+      "file": "elements/illustrations/strawberry-smoothie.svg",
+      "thumbnail": "elements/illustrations/strawberry-smoothie.svg",
+      "description": "strawberry-smoothie illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-globe-earth",
+      "id": "illustrations-strawberry",
       "category": "illustrations",
-      "name": "globe-earth",
-      "file": "elements/illustrations/globe-earth.png",
-      "thumbnail": "elements/illustrations/globe-earth.png",
-      "description": "Globe / earth line-art with yellow continents. Used in Selling Points v2."
+      "name": "strawberry",
+      "figmaNodeId": "3416:10686",
+      "file": "elements/illustrations/strawberry.svg",
+      "thumbnail": "elements/illustrations/strawberry.svg",
+      "description": "strawberry illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-milkshake",
+      "id": "illustrations-stroke-diagonal",
       "category": "illustrations",
-      "name": "milkshake",
-      "file": "elements/illustrations/milkshake.png",
-      "thumbnail": "elements/illustrations/milkshake.png",
-      "description": "Milkshake glass with whipped cream and straw. Used in Selling Points v2."
+      "name": "stroke-diagonal",
+      "figmaNodeId": "3416:9727",
+      "file": "elements/illustrations/stroke-diagonal.svg",
+      "thumbnail": "elements/illustrations/stroke-diagonal.svg",
+      "description": "stroke-diagonal illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-glass-juice",
+      "id": "illustrations-stroke-vertical",
       "category": "illustrations",
-      "name": "glass-juice",
-      "file": "elements/illustrations/glass-juice.png",
-      "thumbnail": "elements/illustrations/glass-juice.png",
-      "description": "Glass with yellow juice / drink. Used in Selling Points v2."
+      "name": "stroke-vertical",
+      "figmaNodeId": "3416:9724",
+      "file": "elements/illustrations/stroke-vertical.svg",
+      "thumbnail": "elements/illustrations/stroke-vertical.svg",
+      "description": "stroke-vertical illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-piggy-bank",
+      "id": "illustrations-suitcase",
       "category": "illustrations",
-      "name": "piggy-bank",
-      "file": "elements/illustrations/piggy-bank.png",
-      "thumbnail": "elements/illustrations/piggy-bank.png",
-      "description": "Yellow piggy bank with £ coin. Used in Selling Points v2."
+      "name": "suitcase",
+      "figmaNodeId": "3416:11805",
+      "file": "elements/illustrations/suitcase.svg",
+      "thumbnail": "elements/illustrations/suitcase.svg",
+      "description": "suitcase illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-wrestlers",
+      "id": "illustrations-teabag",
       "category": "illustrations",
-      "name": "wrestlers",
-      "file": "elements/illustrations/wrestlers.png",
-      "thumbnail": "elements/illustrations/wrestlers.png",
-      "description": "Wrestling / twisting figure illustration. Used in Selling Points v3."
+      "name": "teabag",
+      "figmaNodeId": "3416:10604",
+      "file": "elements/illustrations/teabag.svg",
+      "thumbnail": "elements/illustrations/teabag.svg",
+      "description": "teabag illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-sugar-cubes",
+      "id": "illustrations-thumbs-up",
       "category": "illustrations",
-      "name": "sugar-cubes",
-      "file": "elements/illustrations/sugar-cubes.png",
-      "thumbnail": "elements/illustrations/sugar-cubes.png",
-      "description": "Two sugar cubes / boxes line-art. Used in Selling Points v3."
+      "name": "thumbs-up",
+      "figmaNodeId": "3416:10083",
+      "file": "elements/illustrations/thumbs-up.svg",
+      "thumbnail": "elements/illustrations/thumbs-up.svg",
+      "description": "thumbs-up illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-plant-sprig",
+      "id": "illustrations-tick",
       "category": "illustrations",
-      "name": "plant-sprig",
-      "file": "elements/illustrations/plant-sprig.png",
-      "thumbnail": "elements/illustrations/plant-sprig.png",
-      "description": "Plant / herb sprig line-art. Used in Selling Points v3."
+      "name": "tick",
+      "figmaNodeId": "3416:9753",
+      "file": "elements/illustrations/tick.svg",
+      "thumbnail": "elements/illustrations/tick.svg",
+      "description": "tick illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-flexed-bicep",
+      "id": "illustrations-tofu-block",
       "category": "illustrations",
-      "name": "flexed-bicep",
-      "file": "elements/illustrations/flexed-bicep.png",
-      "thumbnail": "elements/illustrations/flexed-bicep.png",
-      "description": "Flexed bicep / strong arm icon. Used in Selling Points v3."
+      "name": "tofu-block",
+      "figmaNodeId": "3416:11697",
+      "file": "elements/illustrations/tofu-block.svg",
+      "thumbnail": "elements/illustrations/tofu-block.svg",
+      "description": "tofu-block illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-hot-mug",
+      "id": "illustrations-tongue-out",
       "category": "illustrations",
-      "name": "hot-mug",
-      "file": "elements/illustrations/hot-mug.png",
-      "thumbnail": "elements/illustrations/hot-mug.png",
-      "description": "Yellow mug with marshmallows / whipped cream. Used in Selling Points v4."
+      "name": "tongue-out",
+      "figmaNodeId": "3416:9925",
+      "file": "elements/illustrations/tongue-out.svg",
+      "thumbnail": "elements/illustrations/tongue-out.svg",
+      "description": "tongue-out illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-plant-sprig-v4",
+      "id": "illustrations-tote-bag",
       "category": "illustrations",
-      "name": "plant-sprig-v4",
-      "file": "elements/illustrations/plant-sprig-v4.png",
-      "thumbnail": "elements/illustrations/plant-sprig-v4.png",
-      "description": "Plant sprig with yellow circle behind (v4 variant). Used in Selling Points v4."
+      "name": "tote-bag",
+      "figmaNodeId": "3416:11925",
+      "file": "elements/illustrations/tote-bag.svg",
+      "thumbnail": "elements/illustrations/tote-bag.svg",
+      "description": "tote-bag illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-hearts",
+      "id": "illustrations-trophy",
       "category": "illustrations",
-      "name": "hearts",
-      "file": "elements/illustrations/hearts.png",
-      "thumbnail": "elements/illustrations/hearts.png",
-      "description": "Two hearts line-art. Used in Selling Points v4."
+      "name": "trophy",
+      "figmaNodeId": "3416:12027",
+      "file": "elements/illustrations/trophy.svg",
+      "thumbnail": "elements/illustrations/trophy.svg",
+      "description": "trophy illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-eye",
+      "id": "illustrations-uk-map",
       "category": "illustrations",
-      "name": "eye",
-      "file": "elements/illustrations/eye.png",
-      "thumbnail": "elements/illustrations/eye.png",
-      "description": "Eye line-art with lashes. Used in Selling Points v5."
+      "name": "uk-map",
+      "figmaNodeId": "3416:10159",
+      "file": "elements/illustrations/uk-map.svg",
+      "thumbnail": "elements/illustrations/uk-map.svg",
+      "description": "uk-map illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-lightbulb",
+      "id": "illustrations-user",
       "category": "illustrations",
-      "name": "lightbulb",
-      "file": "elements/illustrations/lightbulb.png",
-      "thumbnail": "elements/illustrations/lightbulb.png",
-      "description": "Lightbulb line-art (filled). Used in Selling Points v5."
+      "name": "user",
+      "figmaNodeId": "3416:10062",
+      "file": "elements/illustrations/user.svg",
+      "thumbnail": "elements/illustrations/user.svg",
+      "description": "user illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-heart-hand",
+      "id": "illustrations-water-bottle",
       "category": "illustrations",
-      "name": "heart-hand",
-      "file": "elements/illustrations/heart-hand.png",
-      "thumbnail": "elements/illustrations/heart-hand.png",
-      "description": "Heart with hand / care gesture. Used in Selling Points v5."
+      "name": "water-bottle",
+      "figmaNodeId": "3416:12065",
+      "file": "elements/illustrations/water-bottle.svg",
+      "thumbnail": "elements/illustrations/water-bottle.svg",
+      "description": "water-bottle illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-press-logo-369",
+      "id": "illustrations-watering-can",
       "category": "illustrations",
-      "name": "press-logo-369",
-      "file": "elements/illustrations/press-logo-369.png",
-      "thumbnail": "elements/illustrations/press-logo-369.png",
-      "description": "Press / publication logo placeholder. Used in Logo Strip Block v1."
+      "name": "watering-can",
+      "figmaNodeId": "3416:12129",
+      "file": "elements/illustrations/watering-can.svg",
+      "thumbnail": "elements/illustrations/watering-can.svg",
+      "description": "watering-can illustration from Mighty Figma library."
     },
     {
-      "id": "illustrations-press-logo-400",
+      "id": "illustrations-whisk",
       "category": "illustrations",
-      "name": "press-logo-400",
-      "file": "elements/illustrations/press-logo-400.png",
-      "thumbnail": "elements/illustrations/press-logo-400.png",
-      "description": "Press / publication logo placeholder. Used in Logo Strip Block v1."
-    },
-    {
-      "id": "illustrations-press-logo-410",
-      "category": "illustrations",
-      "name": "press-logo-410",
-      "file": "elements/illustrations/press-logo-410.png",
-      "thumbnail": "elements/illustrations/press-logo-410.png",
-      "description": "Press / publication logo placeholder. Used in Logo Strip Block v1."
-    },
-    {
-      "id": "illustrations-press-logo-416",
-      "category": "illustrations",
-      "name": "press-logo-416",
-      "file": "elements/illustrations/press-logo-416.png",
-      "thumbnail": "elements/illustrations/press-logo-416.png",
-      "description": "Press / publication logo placeholder. Used in Logo Strip Block v1."
-    },
-    {
-      "id": "illustrations-press-logo-426",
-      "category": "illustrations",
-      "name": "press-logo-426",
-      "file": "elements/illustrations/press-logo-426.png",
-      "thumbnail": "elements/illustrations/press-logo-426.png",
-      "description": "Press / publication logo placeholder. Used in Logo Strip Block v1."
-    },
-    {
-      "id": "illustrations-quote-mark",
-      "category": "illustrations",
-      "name": "quote-mark",
-      "file": "elements/illustrations/quote-mark.svg",
-      "thumbnail": "elements/illustrations/quote-mark.svg",
-      "description": "Quotation mark glyph. Used in Quote Block v3."
-    },
-    {
-      "id": "illustrations-paint-stroke-yellow",
-      "category": "illustrations",
-      "name": "paint-stroke-yellow",
-      "file": "elements/illustrations/paint-stroke-yellow.svg",
-      "thumbnail": "elements/illustrations/paint-stroke-yellow.svg",
-      "description": "Yellow brushstroke decoration. Used in Quote Block v4."
-    },
-    {
-      "id": "illustrations-paint-stroke-black",
-      "category": "illustrations",
-      "name": "paint-stroke-black",
-      "file": "elements/illustrations/paint-stroke-black.svg",
-      "thumbnail": "elements/illustrations/paint-stroke-black.svg",
-      "description": "Black brushstroke decoration. Used in Quote Block v4."
-    },
-    {
-      "id": "illustrations-grid-paper",
-      "category": "illustrations",
-      "name": "grid-paper",
-      "file": "elements/illustrations/grid-paper.svg",
-      "thumbnail": "elements/illustrations/grid-paper.svg",
-      "description": "Yellow grid-paper background pattern. Used in Quote Block v4."
-    },
-    {
-      "id": "illustrations-speech-bubble-orange",
-      "category": "illustrations",
-      "name": "speech-bubble-orange",
-      "file": "elements/illustrations/speech-bubble-orange.svg",
-      "thumbnail": "elements/illustrations/speech-bubble-orange.svg",
-      "description": "Painted orange speech bubble shape. Used in UGC Block A v2."
-    },
-    {
-      "id": "illustrations-pancakes-doodle",
-      "category": "illustrations",
-      "name": "pancakes-doodle",
-      "file": "elements/illustrations/pancakes-doodle.svg",
-      "thumbnail": "elements/illustrations/pancakes-doodle.svg",
-      "description": "Pancakes doodle illustration. Used in UGC Block A v2."
-    },
-    {
-      "id": "illustrations-milk-bottle-doodle",
-      "category": "illustrations",
-      "name": "milk-bottle-doodle",
-      "file": "elements/illustrations/milk-bottle-doodle.svg",
-      "thumbnail": "elements/illustrations/milk-bottle-doodle.svg",
-      "description": "Hand-drawn milk bottle doodle. Used in UGC Block A v2."
-    },
-    {
-      "id": "illustrations-icon-mighty-card",
-      "category": "illustrations",
-      "name": "icon-mighty-card",
-      "file": "elements/illustrations/icon-mighty-card.svg",
-      "thumbnail": "elements/illustrations/icon-mighty-card.svg",
-      "description": "MIGHTY postcard with M-bolt monogram icon. Used in Q&A Blocks v1 and v2."
+      "name": "whisk",
+      "figmaNodeId": "3416:10415",
+      "file": "elements/illustrations/whisk.svg",
+      "thumbnail": "elements/illustrations/whisk.svg",
+      "description": "whisk illustration from Mighty Figma library."
     }
   ],
   "photos": [
@@ -2742,16 +3428,6 @@ window.__MIGHTY_DB = {
       "products": [
         "Pea MLK"
       ]
-    },
-    {
-      "id": "ai-ugc-36",
-      "category": "ai-ugc",
-      "name": "AI UGC #36",
-      "figmaNodeId": "3416:12357",
-      "file": "photos/ai-ugc/photo-36.png",
-      "thumbnail": "photos/ai-ugc/photo-36.png",
-      "description": "AI-generated UGC-style lifestyle photo.",
-      "products": []
     },
     {
       "id": "ai-lifestyle-01",
@@ -3938,10 +4614,6 @@ window.__MIGHTY_DB = {
     }
   ],
   "elementCategories": [
-    {
-      "id": "backgrounds",
-      "label": "Backgrounds"
-    },
     {
       "id": "dividers",
       "label": "Dividers"

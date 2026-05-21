@@ -2,7 +2,8 @@
 // Usage: <body data-page="foundation"> ... <div id="nav"></div>
 (function () {
   const pages = [
-    { id: 'foundation', label: 'Foundation', url: 'foundation.html' }
+    { id: 'foundation', label: 'Foundation', url: 'foundation.html' },
+    { id: 'elements',   label: 'Elements',   url: 'elements.html' }
   ];
 
   const current = document.body.dataset.page || '';

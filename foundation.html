@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mighty — Foundation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Caveat+Brush&family=Inter:wght@500&family=Montserrat:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="_shared.css">
+  <style>
+    .section-anchors { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+    .section-anchors a { padding: 8px 16px; border: 1.5px solid var(--jet); color: var(--jet); text-decoration: none; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; border-radius: 40px; transition: background 0.1s; }
+    .section-anchors a:hover { background: var(--spark); }
+
+    section.fnd { margin-bottom: 96px; scroll-margin-top: 80px; }
+    section.fnd .section-head { margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--grey-2); display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+    section.fnd h2 { font-size: 28px; font-weight: 800; text-transform: uppercase; line-height: 1; letter-spacing: -0.5px; }
+    section.fnd h2 .num { color: var(--spark); margin-right: 12px; font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 16px; vertical-align: middle; }
+    section.fnd .section-lede { font-size: 13px; color: var(--grey-4); flex: 1; min-width: 200px; }
+    section.fnd .figma-link { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--grey-3); }
+
+    /* ===== Colours ===== */
+    .color-group { margin-bottom: 32px; }
+    .color-group h3 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--grey-4); margin-bottom: 4px; }
+    .color-group .note { font-size: 11px; color: var(--grey-3); margin-bottom: 12px; font-style: italic; }
+    .color-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+    .swatch-card { background: white; border: 2px solid var(--jet); border-radius: 8px; overflow: hidden; cursor: pointer; transition: transform 0.1s, box-shadow 0.1s; }
+    .swatch-card:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--spark); }
+    .swatch-card .swatch { aspect-ratio: 4/3; }
+    .swatch-card .info { padding: 12px 14px; border-top: 2px solid var(--jet); }
+    .swatch-card .name { font-size: 14px; font-weight: 800; text-transform: uppercase; line-height: 1.1; margin-bottom: 4px; }
+    .swatch-card .hex { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--grey-4); margin-bottom: 2px; }
+    .swatch-card .token { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--grey-3); }
+
+    /* ===== Fonts ===== */
+    .type-row { display: grid; grid-template-columns: 280px 1fr; gap: 32px; padding: 28px 0; border-bottom: 1px solid var(--grey-2); align-items: baseline; }
+    .type-row:last-child { border-bottom: 0; }
+    .type-meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; line-height: 1.7; color: var(--grey-4); }
+    .type-meta .label { color: var(--jet); font-weight: 700; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; margin-bottom: 4px; display: block; }
+    .type-meta .role { color: var(--grey-3); font-family: 'Montserrat', sans-serif; font-size: 11px; }
+    .type-meta .usage { color: var(--ink); margin-top: 6px; line-height: 1.5; font-family: 'Montserrat', sans-serif; font-size: 13px; }
+    .type-meta .fallback { background: var(--grey-1); border: 1px dashed var(--grey-3); padding: 8px 10px; margin-top: 10px; font-size: 11px; line-height: 1.5; border-radius: 4px; color: var(--grey-4); font-family: 'Montserrat', sans-serif; }
+    .type-meta .fallback strong { color: var(--jet); }
+    .type-sample { line-height: 1; }
+    .ms { font-family: 'Montserrat', sans-serif; color: var(--ink); }
+    .flood { font-family: 'Flood Std', 'Caveat Brush', cursive; color: var(--ink); }
+    .families-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
+    .family-card { background: white; border: 2px solid var(--jet); border-radius: 8px; padding: 20px 24px; }
+    .family-card .role-tag { display: inline-block; background: var(--spark); color: var(--jet); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; padding: 2px 8px; border-radius: 10px; margin-bottom: 12px; }
+    .family-card .family-name { font-family: 'Montserrat'; font-weight: 800; font-size: 22px; text-transform: uppercase; line-height: 1; margin-bottom: 8px; }
+    .family-card .family-name.flood-name { font-family: 'Flood Std', 'Caveat Brush', cursive; font-weight: 400; font-size: 36px; letter-spacing: -1.5px; color: var(--spark); margin-bottom: 0; }
+    .family-card .family-use { font-size: 12px; color: var(--grey-4); line-height: 1.5; margin-top: 8px; }
+    .family-card .family-weights { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--grey-3); margin-top: 10px; }
+    .family-card .web-status { font-size: 11px; color: var(--grey-4); background: var(--grey-1); border-left: 2px solid var(--grey-2); padding: 8px 10px; margin-top: 12px; border-radius: 0 4px 4px 0; line-height: 1.5; }
+    .family-card .web-status.warn { border-left-color: var(--spark); }
+
+    .scale-section h3 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--grey-4); margin: 24px 0 12px; }
+    .scale-row { display: grid; grid-template-columns: 260px 1fr 1fr; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--grey-2); align-items: baseline; }
+    .scale-row:last-child { border-bottom: 0; }
+    .scale-meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; line-height: 1.7; color: var(--grey-4); }
+    .scale-meta .label { color: var(--jet); font-weight: 700; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; margin-bottom: 4px; display: block; }
+    .scale-meta .case-tag { display: inline-block; background: var(--grey-2); color: var(--jet); padding: 1px 6px; border-radius: 3px; font-size: 9px; font-weight: 700; text-transform: uppercase; margin-left: 4px; vertical-align: middle; }
+    .scale-sample { line-height: 1; overflow: hidden; }
+    .scale-sample .ms-sample { font-family: 'Montserrat'; }
+    .scale-sample .flood-sample { font-family: 'Flood Std', 'Caveat Brush', cursive; color: var(--spark); letter-spacing: -1.5px; }
+    .scale-col-head { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--grey-3); text-transform: uppercase; letter-spacing: 1px; padding-bottom: 8px; border-bottom: 1px solid var(--grey-2); margin-bottom: 8px; }
+
+    /* ===== Buttons ===== */
+    .btn-section h3 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--grey-4); margin: 28px 0 12px; }
+    .btn-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+    .btn-card { background: white; border: 2px solid var(--jet); border-radius: 8px; padding: 36px 20px 18px; }
+    .btn-card .stage { display: flex; align-items: center; justify-content: center; min-height: 70px; padding: 8px 0 24px; }
+    .btn-card .info { border-top: 1px solid var(--grey-2); padding-top: 12px; }
+    .btn-card .name { font-size: 13px; font-weight: 800; text-transform: uppercase; line-height: 1; margin-bottom: 4px; }
+    .btn-card .meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--grey-3); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Montserrat', sans-serif; font-weight: 500; text-align: center; white-space: nowrap; cursor: pointer; border: 0; }
+    .btn-body { font-size: 12px; line-height: 1.3; letter-spacing: 0.24px; padding: 8px 18px; }
+    .btn-hero { font-size: 15px; line-height: 1.3; letter-spacing: 0.3px; padding: 10px 24px; }
+    .btn-jet { background: var(--jet); color: var(--mlk); filter: drop-shadow(-6px 6px 0 var(--mlk)); }
+    .btn-unsweet { background: #E86A0A; color: var(--mlk); filter: drop-shadow(-6px 6px 0 var(--mlk)); }
+    .btn-spark { background: var(--spark); color: var(--jet); filter: drop-shadow(-6px 6px 0 var(--jet)); }
+
+    /* ===== Logos ===== */
+    .logo-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+    .logo-card { background: white; border: 2px solid var(--jet); border-radius: 8px; overflow: hidden; }
+    .logo-card .surface { aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; padding: 24px; }
+    .logo-card .surface.bg-jet { background: var(--jet); }
+    .logo-card .surface.bg-mlk { background: var(--mlk); }
+
+    /* The MIGHTY logo is ALWAYS tilted 10.5° per brand rules */
+    .logo-mark { position: relative; width: 130px; height: 73px; transform: rotate(-10.5deg); }
+    .logo-mark.no-sparkles { width: 124px; height: 56px; }
+    .logo-mark .wordmark, .logo-mark .tm-mark, .logo-mark .sparkles { position: absolute; display: block; }
+    .logo-mark .wordmark { bottom: 0; left: 6px; width: 102px; height: 42px; }
+    .logo-mark .tm-mark  { top: 14px; right: 0; width: 18px; height: 10px; }
+    .logo-mark .sparkles { top: 0; left: 12px; width: 42px; height: 32px; }
+    .logo-mark img { display: block; width: 100%; height: 100%; }
+    /* SVGs ship with yellow (#F0B504) fallback; filters recolour them */
+    .logo-mark.color-jet img   { filter: brightness(0); }                                          /* → Jet (black) */
+    .logo-mark.color-mlk img   { filter: brightness(0) invert(1) brightness(0.96) sepia(0.06); }   /* → Not M.L.K. (cream) */
+    /* color-spark uses the SVG's native Spark yellow */
+
+    /* Emblem: M + lightning bolt — composed of 2 SVG pieces */
+    .emblem-mark { position: relative; width: 50px; height: 70px; transform: rotate(-10.5deg); }
+    .emblem-mark .m-body, .emblem-mark .bolt { position: absolute; display: block; }
+    .emblem-mark .m-body { left: 9px; top: 12px; width: 32px; height: 45px; }
+    .emblem-mark .bolt   { left: 17px; top: 4px; width: 14px; height: 56px; }
+    .emblem-mark img { display: block; width: 100%; height: 100%; }
+    .emblem-mark.emblem-black img { filter: brightness(0); }
+    /* emblem-spark uses native Spark colours — bolt is yellow, M-body is near-black (invisible on Jet surface) */
+
+    .logo-card .info { padding: 12px 16px; border-top: 2px solid var(--jet); }
+    .logo-card .name { font-size: 13px; font-weight: 800; text-transform: uppercase; line-height: 1.1; margin-bottom: 4px; }
+    .logo-card .meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--grey-3); margin-bottom: 4px; }
+    .logo-card .use { font-size: 11px; color: var(--grey-4); }
+
+    .copy-toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: var(--jet); color: var(--mlk); padding: 10px 18px; border-radius: 40px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; opacity: 0; transition: opacity 0.2s; pointer-events: none; z-index: 200; }
+    .copy-toast.show { opacity: 1; }
+
+    @media (max-width: 720px) {
+      .type-row { grid-template-columns: 1fr; gap: 12px; }
+      .m-xb, .flood { font-size: 42px; }
+    }
+  </style>
+</head>
+<body data-page="foundation">
+  <div class="page">
+    <header class="page-header">
+      <div>
+        <h1>Brand <span class="accent">Foundation</span></h1>
+      </div>
+      <p class="lede">The brand-locked atoms. <strong>Not M.L.K. 50% / Jet 40% / Spark 10%</strong> is the usage ratio. Voice = OOMPHY · FUNNY · PALLY. Customer is the hero, brand is the guide.</p>
+    </header>
+
+    <nav class="section-anchors">
+      <a href="#colours">Colours</a>
+      <a href="#fonts">Fonts</a>
+      <a href="#buttons">Buttons</a>
+      <a href="#logos">Logos</a>
+    </nav>
+
+    <section id="colours" class="fnd">
+      <div class="section-head"><h2><span class="num">01</span>Colours</h2><p class="section-lede">The Mighty palette runs <strong>Not M.L.K. 50% · Jet 40% · Spark 10%</strong> across any composition. Main = brand-locked, always together. Product-line groups are situational — pick one per SKU, never mix product palettes within a block.</p></div>
+      <div id="colour-groups"></div>
+    </section>
+
+    <section id="fonts" class="fnd">
+      <div class="section-head"><h2><span class="num">02</span>Fonts</h2><p class="section-lede">Two fonts. <strong>Montserrat</strong> is the workhorse (all headings + body). <strong>Flood</strong> is the brushy accent — only ever inside a Montserrat headline, used for 1–3 emphasis words, typically in Spark yellow. Headlines run upper-case with kerning 0; body runs +50 kerning with generous leading.</p></div>
+      <div id="fonts-content"></div>
+    </section>
+
+    <section id="buttons" class="fnd">
+      <div class="section-head"><h2><span class="num">03</span>Buttons</h2><p class="section-lede">Two sizes × three colours. All carry the offset shadow (-6/6). Spark sits on Jet — its shadow flips to Jet.</p></div>
+      <div class="btn-section">
+        <h3>Body</h3>
+        <div class="btn-grid">
+          <div class="btn-card"><div class="stage"><button class="btn btn-body btn-jet">Lorem ipsum</button></div><div class="info"><div class="name">Body · Jet</div><div class="meta">bg #000 · text #F5F4EC · shadow #F5F4EC</div></div></div>
+          <div class="btn-card"><div class="stage"><button class="btn btn-body btn-unsweet">Lorem ipsum</button></div><div class="info"><div class="name">Body · Unsweetened</div><div class="meta">bg #E86A0A · text #F5F4EC · shadow #F5F4EC</div></div></div>
+          <div class="btn-card"><div class="stage"><button class="btn btn-body btn-spark">Lorem ipsum</button></div><div class="info"><div class="name">Body · Spark</div><div class="meta">bg #F0B504 · text #000 · shadow #000</div></div></div>
+        </div>
+      </div>
+      <div class="btn-section">
+        <h3>Hero</h3>
+        <div class="btn-grid">
+          <div class="btn-card"><div class="stage"><button class="btn btn-hero btn-jet">Lorem ipsum</button></div><div class="info"><div class="name">Hero · Jet</div><div class="meta">bg #000 · text #F5F4EC · shadow #F5F4EC</div></div></div>
+          <div class="btn-card"><div class="stage"><button class="btn btn-hero btn-unsweet">Lorem ipsum</button></div><div class="info"><div class="name">Hero · Unsweetened</div><div class="meta">bg #E86A0A · text #F5F4EC · shadow #F5F4EC</div></div></div>
+          <div class="btn-card"><div class="stage"><button class="btn btn-hero btn-spark">Lorem ipsum</button></div><div class="info"><div class="name">Hero · Spark</div><div class="meta">bg #F0B504 · text #000 · shadow #000</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="logos" class="fnd">
+      <div class="section-head"><h2><span class="num">04</span>Logos</h2><p class="section-lede">6 variants. The SVG itself is what matters — surfaces below are neutral light/dark only, to show dark-mode behaviour. Always tilted <strong>10.5°</strong> — non-negotiable.</p></div>
+      <div class="logo-grid">
+        <div class="logo-card">
+          <div class="surface bg-mlk"><div class="logo-mark color-jet"><span class="sparkles"><img src="foundations/assets/logo-group.svg" alt=""></span><span class="wordmark"><img src="foundations/assets/logo-vector.svg" alt="MIGHTY"></span><span class="tm-mark"><img src="foundations/assets/logo-tm.svg" alt=""></span></div></div>
+          <div class="info"><div class="name">Primary · Jet</div><div class="meta">3416:9223 · 149×83</div><div class="use">Default wordmark with sparkles, in Jet.</div></div>
+        </div>
+        <div class="logo-card">
+          <div class="surface bg-jet"><div class="logo-mark color-mlk"><span class="sparkles"><img src="foundations/assets/logo-group.svg" alt=""></span><span class="wordmark"><img src="foundations/assets/logo-vector.svg" alt="MIGHTY"></span><span class="tm-mark"><img src="foundations/assets/logo-tm.svg" alt=""></span></div></div>
+          <div class="info"><div class="name">Primary · Not M.L.K.</div><div class="meta">3416:9240 · 151×83</div><div class="use">Default wordmark with sparkles, in Not M.L.K. (dark mode).</div></div>
+        </div>
+        <div class="logo-card">
+          <div class="surface bg-mlk"><div class="logo-mark color-jet no-sparkles"><span class="wordmark"><img src="foundations/assets/logo-vector.svg" alt="MIGHTY"></span><span class="tm-mark"><img src="foundations/assets/logo-tm.svg" alt=""></span></div></div>
+          <div class="info"><div class="name">Secondary · Jet</div><div class="meta">3416:9257 · 149×83</div><div class="use">Wordmark only (no sparkles), in Jet.</div></div>
+        </div>
+        <div class="logo-card">
+          <div class="surface bg-jet"><div class="logo-mark color-mlk no-sparkles"><span class="wordmark"><img src="foundations/assets/logo-vector.svg" alt="MIGHTY"></span><span class="tm-mark"><img src="foundations/assets/logo-tm.svg" alt=""></span></div></div>
+          <div class="info"><div class="name">Secondary · Not M.L.K.</div><div class="meta">3416:9266 · 151×83</div><div class="use">Wordmark only, in Not M.L.K. (dark mode).</div></div>
+        </div>
+        <div class="logo-card emblem">
+          <div class="surface bg-mlk"><div class="emblem-mark emblem-black"><span class="m-body"><img src="foundations/assets/emblem-black/group.svg" alt=""></span><span class="bolt"><img src="foundations/assets/emblem-black/v4.svg" alt="M"></span></div></div>
+          <div class="info"><div class="name">Emblem · Black</div><div class="meta">3416:9275 · 69×92</div><div class="use">M + lightning for tight surfaces (avatar, favicon, in-pattern).</div></div>
+        </div>
+        <div class="logo-card emblem">
+          <div class="surface bg-mlk"><div class="emblem-mark emblem-spark"><span class="m-body"><img src="foundations/assets/emblem-spark/m-body.svg" alt=""></span><span class="bolt"><img src="foundations/assets/emblem-spark/bolt.svg" alt="M"></span></div></div>
+          <div class="info"><div class="name">Emblem · Spark</div><div class="meta">3416:9285 · 69×91</div><div class="use">M in Jet with Spark-yellow lightning bolt. Sub-logo for tight surfaces.</div></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="copy-toast" id="toast">Copied</div>
+
+  <script src="_database.js"></script>
+  <script src="_nav.js"></script>
+  <script>
+  hydrate(window.__MIGHTY_DB);
+
+  function hydrate(db) {
+    // Colours
+    const groupsEl = document.getElementById('colour-groups');
+    for (const g of db.foundation.colors.groups) {
+      const wrap = document.createElement('div');
+      wrap.className = 'color-group';
+      wrap.innerHTML = `<h3>${g.name}${g.note ? ` · ${g.note}` : ''}</h3>` +
+                       `<div class="color-grid">${g.swatches.map(s => `
+                         <div class="swatch-card" data-hex="${s.hex}">
+                           <div class="swatch" style="background:${s.hex}"></div>
+                           <div class="info">
+                             <div class="name">${s.name}</div>
+                             <div class="hex">${s.hex}</div>
+                             <div class="token">${s.token}</div>
+                           </div>
+                         </div>`).join('')}</div>`;
+      groupsEl.appendChild(wrap);
+    }
+    // Click-to-copy
+    document.querySelectorAll('.swatch-card').forEach(card => {
+      card.onclick = () => copyValue(card.dataset.hex);
+    });
+
+    // Fonts
+    const fontsEl = document.getElementById('fonts-content');
+    const fonts = db.foundation.fonts;
+    const familiesHtml = `
+      <div class="families-grid">
+        ${fonts.families.map(f => `
+          <div class="family-card">
+            <span class="role-tag">${f.role}</span>
+            <div class="family-name ${f.name === 'Flood Std' ? 'flood-name' : ''}">${f.name}</div>
+            <div class="family-use">${f.use}</div>
+            <div class="family-weights">${f.weights.join(' · ')}</div>
+            <div class="web-status ${f.name === 'Flood Std' ? 'warn' : ''}">${f.webStatus}</div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    const scaleHtml = `
+      <div class="scale-section">
+        <h3>Type scale</h3>
+        <div class="scale-row" style="border-bottom: 2px solid var(--jet); padding-top: 0">
+          <div class="scale-col-head">Token</div>
+          <div class="scale-col-head">Montserrat — primary</div>
+          <div class="scale-col-head">Flood Std — accent (headings only)</div>
+        </div>
+        ${fonts.scale.map(s => `
+          <div class="scale-row">
+            <div class="scale-meta">
+              <span class="label">${s.name}${s.case === 'UPPERCASE' ? '<span class="case-tag">UC</span>' : ''}</span>
+              ${s.size_px}px · LH ${s.lineHeight}<br>
+              ${s.weight}<br>
+              tracking ${s.letterSpacing}
+            </div>
+            <div class="scale-sample">
+              <span class="ms-sample" style="font-size: ${Math.min(s.size_px, 56)}px; font-weight: ${s.weight.includes('ExtraBold') ? 800 : s.weight.includes('Bold') ? 700 : 500}; line-height: ${s.lineHeight}; text-transform: ${s.case === 'UPPERCASE' ? 'uppercase' : 'none'};">${sampleForToken(s.name)}</span>
+            </div>
+            <div class="scale-sample">
+              ${s.name.startsWith('Heading') ? `<span class="flood-sample" style="font-size: ${Math.min(s.size_px, 56)}px; line-height: ${s.lineHeight}; text-transform: ${s.case === 'UPPERCASE' ? 'uppercase' : 'none'};">${sampleForToken(s.name)}</span>` : '<span style="color: var(--grey-3); font-size: 11px; font-style: italic">Headings only</span>'}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    fontsEl.innerHTML = familiesHtml + scaleHtml;
+
+    function sampleForToken(tok) {
+      const samples = {
+        'Heading 1': 'Mighty mornings',
+        'Heading 2': 'Plant power',
+        'Heading 3': 'Section title',
+        'Heading 4': 'Subhead',
+        'Heading 5': 'Eyebrow',
+        'Heading 6': 'Small label',
+        'Body L':    'Body copy stays warm, direct, no filler.',
+        'Body':      'Plant-based without preaching — confident and minimal.',
+        'Body S':    'Small print, fine print, footnotes.',
+        'Caption':   '©Mighty 2026. All rights reserved.'
+      };
+      return samples[tok] || tok;
+    }
+
+    // Logos render is now static HTML (above) using CSS masks for transparent SVG composition.
+  }
+
+  const toast = document.getElementById('toast');
+  let toastTimer;
+  function copyValue(val) {
+    navigator.clipboard.writeText(val).then(() => {
+      toast.textContent = `Copied ${val}`;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 1400);
+    });
+  }
+  </script>
+  <script src="_rules-footer.js"></script>
+</body>
+</html>

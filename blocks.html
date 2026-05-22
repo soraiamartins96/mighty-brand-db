@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mighty — Email Blocks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="_shared.css">
+  <style>
+    .grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); align-items: start; }
+    .bl-card { background: white; border: 2px solid var(--jet); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform .1s, box-shadow .1s; }
+    .bl-card:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--spark); }
+    /* Preview: each block is a self-contained 600px doc rendered in an isolated iframe, scaled to fit the card. */
+    .bl-card .stage { background:
+        repeating-conic-gradient(#f3f3f3 0% 25%, transparent 0% 50%) 50% / 14px 14px;
+      overflow: hidden; position: relative; }
+    .bl-card .stage iframe { border: 0; width: 600px; transform-origin: top left; display: block; pointer-events: none; }
+    .bl-card .body { padding: 12px 14px; border-top: 2px solid var(--jet); }
+    .bl-card .name { font-size: 13px; font-weight: 800; text-transform: uppercase; line-height: 1.1; margin-bottom: 4px; }
+    .bl-card .id-row { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--grey-3); margin-bottom: 6px; }
+    .bl-card .id-row code { background: var(--grey-2); padding: 1px 5px; border-radius: 2px; color: var(--grey-4); }
+    .bl-card .desc { font-size: 12px; color: #333; line-height: 1.4; margin-bottom: 8px; }
+    .bl-card .actions { display: flex; gap: 6px; flex-wrap: wrap; padding: 10px 14px; border-top: 1px solid var(--grey-2); background: var(--grey-1); }
+    .bl-card .btn { padding: 5px 10px; border: 1.5px solid var(--jet); background: white; font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; text-decoration: none; color: var(--jet); border-radius: 3px; }
+    .bl-card .btn:hover { background: var(--spark); }
+    .bl-card .badge { display: inline-block; background: var(--spark); color: var(--jet); padding: 2px 7px; border-radius: 10px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-left: 4px; vertical-align: middle; }
+    .bl-card .dims { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--grey-3); }
+
+    /* Toast */
+    .copy-toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: var(--jet); color: var(--mlk); padding: 10px 18px; border-radius: 40px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; opacity: 0; transition: opacity 0.2s; pointer-events: none; z-index: 200; }
+    .copy-toast.show { opacity: 1; }
+  </style>
+</head>
+<body data-page="blocks">
+  <div class="page">
+    <header class="page-header">
+      <div><h1>Email <span class="accent">Blocks</span></h1></div>
+      <p class="lede">The modular email block library. Every block is a <strong>real, self-contained 600px HTML/CSS snippet</strong> — copy it straight into a build.</p>
+    </header>
+
+    <div class="toolbar">
+      <div class="controls">
+        <input class="search" id="search" type="search" placeholder="Search by name, id, section, or description…" autocomplete="off">
+        <span class="stats" id="stats">Showing 0 of 0</span>
+      </div>
+      <div class="sub-tabs" id="sub-tabs"></div>
+    </div>
+
+    <div id="content"></div>
+  </div>
+
+  <div class="copy-toast" id="toast">Copied</div>
+
+  <script src="_database.js"></script>
+  <script src="_nav.js"></script>
+  <script>
+  (function () {
+    const db = window.__MIGHTY_DB;
+    const contentEl = document.getElementById('content');
+    const searchEl = document.getElementById('search');
+    const statsEl = document.getElementById('stats');
+    const subTabsEl = document.getElementById('sub-tabs');
+    const toast = document.getElementById('toast');
+    let activeSection = 'all';
+    let query = '';
+
+    const blocks = (db && db.blocks) || [];
+    // Distinct sections in DB order (server sorts by section, version).
+    const SECTIONS = [...new Set(blocks.map(b => b.section).filter(Boolean))];
+
+    const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const matches = item => {
+      if (!query) return true;
+      const q = query.toLowerCase();
+      return [item.id,item.name,item.section,item.description,item.figmaNodeId].filter(Boolean).join(' ').toLowerCase().includes(q);
+    };
+    // Each block.html already embeds its css; fall back to injecting css if not.
+    const fullDoc = b => (b.html && b.html.toLowerCase().includes('<style')) || !b.css
+      ? b.html
+      : `<style>${b.css}</style>${b.html}`;
+
+    function renderSubTabs() {
+      subTabsEl.innerHTML = '';
+      const all = document.createElement('button');
+      all.className = 'sub-tab' + (activeSection === 'all' ? ' active' : '');
+      all.innerHTML = `All <span class="count">${blocks.length}</span>`;
+      all.onclick = () => { activeSection = 'all'; render(); };
+      subTabsEl.appendChild(all);
+      for (const s of SECTIONS) {
+        const n = blocks.filter(b => b.section === s).length;
+        if (!n) continue;
+        const btn = document.createElement('button');
+        btn.className = 'sub-tab' + (activeSection === s ? ' active' : '');
+        btn.innerHTML = `${esc(s)} <span class="count">${n}</span>`;
+        btn.onclick = () => { activeSection = s; render(); };
+        subTabsEl.appendChild(btn);
+      }
+    }
+
+    // Scale the 600px iframe down to its card's width and size the stage to match.
+    function fitPreview(stage) {
+      const iframe = stage.querySelector('iframe');
+      if (!iframe) return;
+      const w = stage.clientWidth;
+      const scale = w / 600;
+      const h = Number(iframe.dataset.h) || 600;
+      iframe.style.height = h + 'px';
+      iframe.style.transform = `scale(${scale})`;
+      stage.style.height = Math.round(h * scale) + 'px';
+    }
+
+    function renderCard(item) {
+      const card = document.createElement('div');
+      card.className = 'bl-card';
+      const h = Number(item.height) || 600;
+      const version = item.version ? `<span class="badge">${esc(item.version)}</span>` : '';
+      const dims = (item.width && item.height) ? `<span class="dims">${item.width}×${item.height}</span>` : '';
+
+      card.innerHTML = `
+        <div class="stage"><iframe loading="lazy" data-h="${h}" sandbox="allow-same-origin"></iframe></div>
+        <div class="body">
+          <div class="name">${esc(item.name)}${version}</div>
+          <div class="id-row">id: <code>${esc(item.id)}</code> · ${dims}</div>
+          ${item.description ? `<p class="desc">${esc(item.description)}</p>` : ''}
+        </div>
+        <div class="actions">
+          <button class="btn" data-action="copy-html">Copy HTML</button>
+          ${item.css ? '<button class="btn" data-action="copy-css">Copy CSS</button>' : ''}
+          <button class="btn" data-action="open">Open</button>
+        </div>
+      `;
+
+      const iframe = card.querySelector('iframe');
+      iframe.srcdoc = fullDoc(item);
+      const stage = card.querySelector('.stage');
+      // Fit once the card has a measurable width.
+      requestAnimationFrame(() => fitPreview(stage));
+
+      card.querySelector('[data-action="copy-html"]').onclick = () => copyValue(item.html, 'Copied HTML');
+      const cssBtn = card.querySelector('[data-action="copy-css"]');
+      if (cssBtn) cssBtn.onclick = () => copyValue(item.css, 'Copied CSS');
+      card.querySelector('[data-action="open"]').onclick = () => {
+        const blob = new Blob([fullDoc(item)], { type: 'text/html' });
+        window.open(URL.createObjectURL(blob), '_blank');
+      };
+      return card;
+    }
+
+    function render() {
+      renderSubTabs();
+      let list = blocks;
+      if (activeSection !== 'all') list = list.filter(b => b.section === activeSection);
+      const filtered = list.filter(matches);
+      statsEl.textContent = `Showing ${filtered.length} of ${list.length}`;
+      contentEl.innerHTML = '';
+      if (!filtered.length) { contentEl.innerHTML = '<div class="empty">No matches.</div>'; return; }
+
+      if (activeSection === 'all') {
+        for (const s of SECTIONS) {
+          const items = filtered.filter(x => x.section === s);
+          if (!items.length) continue;
+          const head = document.createElement('div');
+          head.className = 'group-header';
+          head.innerHTML = `<h2>${esc(s)}</h2><span class="count-pill">${items.length}</span>`;
+          contentEl.appendChild(head);
+          const grid = document.createElement('div');
+          grid.className = 'grid';
+          items.forEach(i => grid.appendChild(renderCard(i)));
+          contentEl.appendChild(grid);
+        }
+      } else {
+        const grid = document.createElement('div');
+        grid.className = 'grid';
+        filtered.forEach(i => grid.appendChild(renderCard(i)));
+        contentEl.appendChild(grid);
+      }
+      // Re-fit all previews after layout settles.
+      requestAnimationFrame(() => contentEl.querySelectorAll('.stage').forEach(fitPreview));
+    }
+
+    let toastTimer;
+    function copyValue(val, label) {
+      navigator.clipboard.writeText(val).then(() => {
+        toast.textContent = label || 'Copied';
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 1400);
+      });
+    }
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => contentEl.querySelectorAll('.stage').forEach(fitPreview), 120);
+    });
+
+    if (!db || db.error) {
+      contentEl.innerHTML = '<div class="empty">Could not load the database.</div>';
+      return;
+    }
+    searchEl.addEventListener('input', () => { query = searchEl.value.trim(); render(); });
+    render();
+  })();
+  </script>
+  <script src="_rules-footer.js"></script>
+</body>
+</html>

@@ -3,6 +3,7 @@
 (function () {
   const pages = [
     { id: 'foundation', label: 'Foundation', url: 'foundation.html' },
+    { id: 'blocks',     label: 'Email Blocks', url: 'blocks.html' },
     { id: 'elements',   label: 'Elements',   url: 'elements.html' },
     { id: 'photos',     label: 'Photos',     url: 'photos.html' }
   ];

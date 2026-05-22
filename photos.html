@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mighty — Photos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="_shared.css">
+  <style>
+    .filter-bar { display: flex; gap: 12px; margin-top: 12px; align-items: center; flex-wrap: wrap; }
+    .filter-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--grey-4); }
+    .product-select { padding: 6px 12px; border: 1.5px solid var(--jet); background: white; font-family: inherit; font-size: 12px; font-weight: 600; cursor: pointer; }
+  </style>
+</head>
+<body data-page="photos">
+  <div class="page">
+    <header class="page-header">
+      <div><h1>Brand <span class="accent">Photos</span></h1></div>
+      <p class="lede">Imagery library — AI-generated UGC and lifestyle, brand photography, and transparent product cut-outs. Switch between categories and filter by product.</p>
+    </header>
+
+    <div class="toolbar">
+      <div class="controls">
+        <input class="search" id="search" type="search" placeholder="Search photos by name or description…" autocomplete="off">
+        <span class="stats" id="stats">Showing 0 of 0</span>
+      </div>
+      <div class="sub-tabs" id="sub-tabs"></div>
+      <div class="filter-bar">
+        <span class="filter-label">Filter by product:</span>
+        <select class="product-select" id="product-filter">
+          <option value="all">All products</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="content"></div>
+  </div>
+
+  <script src="_database.js"></script>
+  <script src="_nav.js"></script>
+  <script>
+  (function () {
+    const db = window.__MIGHTY_DB;
+    const contentEl = document.getElementById('content');
+    const searchEl = document.getElementById('search');
+    const statsEl = document.getElementById('stats');
+    const subTabsEl = document.getElementById('sub-tabs');
+    const productFilterEl = document.getElementById('product-filter');
+    let activeCategory = 'all';
+    let activeProduct = 'all';
+    let query = '';
+
+    const CATEGORIES = db.photoCategories;
+    const PRODUCTS = db.photoProducts || [
+      "Barista MLK", "Kids MLK", "Pea MLK",
+      "Ultimate Super Berry Powder", "Ultimate Chocolate Powder", "Ultimate Salted Caramel Powder"
+    ];
+
+    // Populate product filter
+    PRODUCTS.forEach(p => {
+      const opt = document.createElement('option');
+      opt.value = p;
+      opt.textContent = p;
+      productFilterEl.appendChild(opt);
+    });
+
+    const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const productsOf = item => Array.isArray(item.products) ? item.products : (item.product ? [item.product] : []);
+    const matches = item => {
+      const prods = productsOf(item);
+      if (activeProduct !== 'all' && !prods.includes(activeProduct)) return false;
+      if (!query) return true;
+      const q = query.toLowerCase();
+      return [item.id,item.name,item.description,item.figmaNodeId,...prods].filter(Boolean).join(' ').toLowerCase().includes(q);
+    };
+
+    function renderSubTabs() {
+      subTabsEl.innerHTML = '';
+      const all = document.createElement('button');
+      all.className = 'sub-tab' + (activeCategory === 'all' ? ' active' : '');
+      all.innerHTML = `All <span class="count">${db.photos.length}</span>`;
+      all.onclick = () => { activeCategory = 'all'; render(); };
+      subTabsEl.appendChild(all);
+      for (const c of CATEGORIES) {
+        const n = db.photos.filter(p => p.category === c.id).length;
+        const btn = document.createElement('button');
+        btn.className = 'sub-tab' + (activeCategory === c.id ? ' active' : '');
+        btn.innerHTML = `${esc(c.label)} <span class="count">${n}</span>`;
+        btn.onclick = () => { activeCategory = c.id; render(); };
+        subTabsEl.appendChild(btn);
+      }
+    }
+
+    function renderCard(item) {
+      const card = document.createElement('div');
+      card.className = 'card';
+      const isOverview = item.id.endsWith('-overview');
+      const prods = productsOf(item);
+      const prodChips = prods.length ? prods.map(p => `<span class="version">${esc(p)}</span>`).join('') : '';
+      card.innerHTML = `
+        <a class="thumb" href="${item.thumbnail}" target="_blank"><img src="${item.thumbnail}" alt="${esc(item.name)}" loading="lazy"></a>
+        <div class="body">
+          <div class="name-row"><span class="name">${esc(item.name)}</span>${prodChips}</div>
+          <div class="id-row">id: <code>${esc(item.id)}</code> · figma: <code>${esc(item.figmaNodeId)}</code></div>
+          <p class="desc">${esc(item.description)}</p>
+          ${isOverview ? '<div class="tags"><span style="background:#F0B504">Pending extraction</span></div>' : ''}
+        </div>`;
+      return card;
+    }
+
+    function render() {
+      renderSubTabs();
+      let list = db.photos;
+      if (activeCategory !== 'all') list = list.filter(p => p.category === activeCategory);
+      const filtered = list.filter(matches);
+      statsEl.textContent = `Showing ${filtered.length} of ${list.length}`;
+      contentEl.innerHTML = '';
+      if (!filtered.length) { contentEl.innerHTML = '<div class="empty"><strong>No photos yet</strong>Pending extraction from this section.</div>'; return; }
+
+      if (activeCategory === 'all') {
+        for (const c of CATEGORIES) {
+          const items = filtered.filter(x => x.category === c.id);
+          if (!items.length) continue;
+          const h = document.createElement('div');
+          h.className = 'group-header';
+          h.innerHTML = `<h2>${esc(c.label)}</h2><span class="count-pill">${items.length}</span><span class="figma-id">section · ${esc(c.figmaNodeId)}</span>`;
+          contentEl.appendChild(h);
+          const grid = document.createElement('div');
+          grid.className = 'grid';
+          items.forEach(i => grid.appendChild(renderCard(i)));
+          contentEl.appendChild(grid);
+        }
+      } else {
+        const grid = document.createElement('div');
+        grid.className = 'grid';
+        filtered.forEach(i => grid.appendChild(renderCard(i)));
+        contentEl.appendChild(grid);
+      }
+    }
+
+    searchEl.addEventListener('input', () => { query = searchEl.value.trim(); render(); });
+    productFilterEl.addEventListener('change', () => { activeProduct = productFilterEl.value; render(); });
+    render();
+  })();
+  </script>
+  <script src="_rules-footer.js"></script>
+</body>
+</html>

@@ -3,7 +3,8 @@
 (function () {
   const pages = [
     { id: 'foundation', label: 'Foundation', url: 'foundation.html' },
-    { id: 'elements',   label: 'Elements',   url: 'elements.html' }
+    { id: 'elements',   label: 'Elements',   url: 'elements.html' },
+    { id: 'photos',     label: 'Photos',     url: 'photos.html' }
   ];
 
   const current = document.body.dataset.page || '';

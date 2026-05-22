@@ -3,7 +3,7 @@ window.__MIGHTY_DB = {
   "source": "Figma — Mighty — Lifecycle (fileKey LSIR0XK4mGRknacXEx7KyC) — Test page (3399:8388)",
   "lastUpdated": "2026-05-21",
   "owner": "Soraia Martins (soraia@parallel9.com)",
-  "scope": "Everything on the Mighty Figma Test page. Foundation is brand-locked; blocks are HTML/CSS-ready; elements + photos are the supporting libraries. Brand voice = OOMPHY · FUNNY · PALLY. Customer is the hero, brand is the guide.",
+  "scope": "Everything on the Mighty Figma Test page. Foundation is brand-locked; blocks are HTML/CSS-ready; elements + photos are the supporting libraries.",
   "navigation": [
     {
       "id": "foundation",
@@ -151,7 +151,7 @@ window.__MIGHTY_DB = {
           ]
         }
       ],
-      "description": "The Mighty palette runs roughly Not M.L.K. 50% / Jet 40% / Spark 10% across any composition. Main = brand-locked, always together. Product-line groups (Milk / Protein / Shakes / Ice Cream) are situational — pick by SKU and never mix product palettes within one block."
+      "description": "Main = brand-locked, always together. Product-line groups (Milk / Protein / Shakes / Ice Cream) are situational — pick by SKU and never mix product palettes within one block."
     },
     "fonts": {
       "figmaNodeId": "3416:9306",
@@ -4663,11 +4663,6 @@ window.__MIGHTY_DB = {
       "label": "Foundation rules",
       "intro": "How to use the brand-locked atoms. Combine these correctly and any block on top stays on-brand.",
       "rules": [
-        {
-          "id": "colours-proportion",
-          "title": "Honour the 50/40/10 ratio",
-          "body": "Across any composition: Not M.L.K. 50%, Jet 40%, Spark 10%. Spark is an accent — never the dominant surface for a whole email or block."
-        },
         {
           "id": "colours-product-lock",
           "title": "One product palette per block",

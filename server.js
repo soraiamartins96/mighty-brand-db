@@ -80,6 +80,45 @@ app.get("/_database.js", async (_req, res) => {
   }
 });
 
+// JSON API — the machine-readable face of the database, for AI/skills to query.
+app.get("/api/database.json", async (_req, res) => {
+  try {
+    res.json(await buildDatabase());
+  } catch (err) {
+    console.error("api database failed:", err);
+    res.status(500).json({ error: String(err) });
+  }
+});
+
+app.get("/api/:kind(blocks|elements|photos)", async (req, res) => {
+  try {
+    const db = await buildDatabase();
+    res.json(db[req.params.kind]);
+  } catch (err) {
+    res.status(500).json({ error: String(err) });
+  }
+});
+
+// Search across name/description/category/section, optionally scoped by ?type=.
+app.get("/api/search", async (req, res) => {
+  try {
+    const q = String(req.query.q || "").toLowerCase().trim();
+    const type = req.query.type; // blocks | elements | photos (optional)
+    const db = await buildDatabase();
+    const kinds = type ? [type] : ["blocks", "elements", "photos"];
+    const hit = (o) =>
+      !q ||
+      [o.name, o.description, o.category, o.section, o.id]
+        .filter(Boolean)
+        .some((v) => String(v).toLowerCase().includes(q));
+    const results = {};
+    for (const k of kinds) results[k] = (db[k] || []).filter(hit);
+    res.json({ query: q, type: type || "all", results });
+  } catch (err) {
+    res.status(500).json({ error: String(err) });
+  }
+});
+
 // Image assets: redirect to a short-lived presigned URL from the private bucket.
 async function serveAsset(req, res) {
   const key = decodeURIComponent(req.path.replace(/^\//, ""));

@@ -66,8 +66,18 @@
     let query = '';
 
     const blocks = (db && db.blocks) || [];
-    // Distinct sections in DB order (server sorts by section, version).
-    const SECTIONS = [...new Set(blocks.map(b => b.section).filter(Boolean))];
+    // Canonical block order — mirrors email-blocks.md (the design source of truth),
+    // not the DB's alphabetical section sort.
+    const CANONICAL = [
+      'Top Strip', 'Hero Section', 'Text Block', 'Single Product Block',
+      'Multi-Product Block', 'Selling Points Block', 'Logo Strip Block', 'Quote Block',
+      'UGC Block', 'Comparison Block', 'Image Grid Block', 'Before & After Block',
+      'Q&A Block', 'Final CTA Block', 'Footer'
+    ];
+    const rank = s => { const i = CANONICAL.indexOf(s); return i === -1 ? CANONICAL.length : i; };
+    // Distinct sections, ordered by email-blocks.md; any unlisted section trails alphabetically.
+    const SECTIONS = [...new Set(blocks.map(b => b.section).filter(Boolean))]
+      .sort((a, b) => rank(a) - rank(b) || a.localeCompare(b));
 
     const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     const matches = item => {
